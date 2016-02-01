@@ -1,0 +1,20 @@
+{
+    "name": "catch/ss-embedable-gallery",
+    "description": "Allows you to create galleries and embed them in the CMS wysiwyg editor",
+    "type": "silverstripe-module",
+    "keywords": ["silverstripe", "gallery"],
+	"license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Aaron Latham-Anderson",
+            "email": "aaron@catch.co.nz"
+        }
+    ],
+    "require":
+    {
+        "silverstripe/framework": "3.*@stable",
+	    "silverstripe/cms": "3.*@stable",
+    },
+    "replace": {"catch/ss-embedable-gallery": "*"}
+
+}
