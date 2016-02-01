@@ -5,7 +5,7 @@ class MediaHomePage extends Page {
 
     private static $allowed_children = array(
         'AlbumsHolder',
-        'ImagesHolder'
+        'ImagesHolder',
         'VideosHolder'
     );
 
