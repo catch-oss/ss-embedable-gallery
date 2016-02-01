@@ -4,45 +4,31 @@ class ImagePage extends MediaPage {
     private static $can_be_root = false;
     private static $allowed_children = 'none';
 
-    private static $db = array(
-        'ZeusHash' => 'Varchar(255)'
-    );
+    public function onBeforeWrite() {
 
-    private static $has_one = array(
-        'Games' => 'GamesPage'
-    );
+        // parent
+        parent::onBeforeWrite();
 
-    private static $belongs_many_many = array(
-        'News'      => 'NewsArticlePage',
-        'Athletes'  => 'AthletePage',
-    );
+        // find the media home page, if it doesn't exist - create it
+        if (!$page = DataObject::get_one('ImagesHolder')) {
 
-    public static function gen_zeus_hash(stdClass $data, AthletePage $athete) {
-        return sha1(
-            $athete->ZeusID .
-            $data->FileName .
-            $data->GamesID
-        );
-    }
+            // media home - created in default record and as a fall back in parent::onBeforeWrite()
+            $home = DataObject::get_one('MediaHomePage');
 
-    public function News() {
-        return $this->getManyManyComponents('News')->sort('InvSortOrder');
-    }
+            // create
+            $page = ImagesHolder::create()->update([
+                'Title' => 'Images',
+                'ParentID' => $home->ID
+            ]);
 
-    public function Athletes() {
-        return $this->getManyManyComponents('Athletes')->sort('InvSortOrder');
-    }
+            // write to all the places
+            $page->write();
+            $page->doRestoreToStage();
+            $page->doPublish();
+        }
 
-    public function getCMSFields() {
-
-        $fields = parent::getCMSFields();
-
-        // add the relation editors
-        $this->AddLinkedContentFields('News', $fields, true, 'InvSortOrder')
-             ->AddBasicRelationEditor('Athletes', $fields, true, 'InvSortOrder');
-
-        return $fields;
-
+        // set parent
+        $this->ParentID = $page->ID;
     }
 }
 

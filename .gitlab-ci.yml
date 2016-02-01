@@ -1,0 +1,29 @@
+# SapphireTest:
+#   script:
+#     - bash bin/test-sapphire-ci module/project
+#   tags:
+#     - silverstripe
+#
+# Mocha:
+#   script:
+#     - bash bin/test-mocha
+#   tags:
+#     - javascript
+#
+# SCSSLint:
+#   script:
+#     - bash bin/lint-scss
+#   tags:
+#     - scss
+#
+# JSLint:
+#   script:
+#     - bash bin/lint-js
+#   tags:
+#     - javascript
+#
+# PHPLint:
+#   script:
+#     - bash bin/lint-php
+#   tags:
+#     - php

@@ -4,28 +4,31 @@ class VideoPage extends MediaPage {
     private static $can_be_root = false;
     private static $allowed_children = 'none';
 
-    private static $belongs_many_many = array(
-        'News'      => 'NewsArticlePage',
-        'Athletes'  => 'AthletePage',
-    );
+    public function onBeforeWrite() {
 
-    public function News() {
-        return $this->getManyManyComponents('News')->sort('InvSortOrder');
-    }
+        // parent
+        parent::onBeforeWrite();
 
-    public function Athletes() {
-        return $this->getManyManyComponents('Athletes')->sort('InvSortOrder');
-    }
+        // find the media home page, if it doesn't exist - create it
+        if (!$page = DataObject::get_one('VideosHolder')) {
 
-    public function getCMSFields() {
+            // media home - created in default record and as a fall back in parent::onBeforeWrite()
+            $home = DataObject::get_one('MediaHomePage');
 
-        $fields = parent::getCMSFields();
+            // create
+            $page = VideosHolder::create()->update([
+                'Title' => 'Videos',
+                'ParentID' => $home->ID
+            ]);
 
-        // add the relation editors
-        $this->AddLinkedContentFields('News', $fields, true, 'InvSortOrder')
-             ->AddBasicRelationEditor('Athletes', $fields, true, 'InvSortOrder');
+            // write to all the places
+            $page->write();
+            $page->doRestoreToStage();
+            $page->doPublish();
+        }
 
-        return $fields;
+        // set parent
+        $this->ParentID = $page->ID;
     }
 }
 

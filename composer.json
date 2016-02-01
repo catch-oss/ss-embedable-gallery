@@ -3,17 +3,19 @@
     "description": "Allows you to create galleries and embed them in the CMS wysiwyg editor",
     "type": "silverstripe-module",
     "keywords": ["silverstripe", "gallery"],
-	"license": "BSD-3-Clause",
+	"license": "Proprietary",
     "authors": [
         {
             "name": "Aaron Latham-Anderson",
             "email": "aaron@catch.co.nz"
         }
     ],
-    "require":
-    {
-        "silverstripe/framework": "3.*@stable",
-	    "silverstripe/cms": "3.*@stable",
+    "require": {
+        "php"                                   : ">=5.3.0",
+        "composer/installers"                   : ">=1.0",
+        "silverstripe/framework"                : ">=3.1",
+        "silverstripe/cms"                      : ">=3.1",
+        "azt3k/abc-silverstripe"                : "*"
     },
     "replace": {"catch/ss-embedable-gallery": "*"}
 
