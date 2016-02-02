@@ -10,20 +10,8 @@ class MediaPage extends Page {
         // parent
         parent::onBeforeWrite();
 
-        // find the media home page, if it doesn't exist - create it
-        if (!$home = DataObject::get_one('MediaHomePage')) {
-
-            // create
-            $home = MediaHomePage::create()->update([
-                'Title' => 'Media',
-                'ShowInMenus' => false,
-            ]);
-
-            // write to all the places
-            $home->write();
-            $home->doRestoreToStage();
-            $home->doPublish();
-        }
+        // Make sure the required records are present
+        singleton('MediaHomePage')->requireDefaultRecords();
     }
 }
 
