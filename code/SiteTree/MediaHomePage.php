@@ -67,7 +67,7 @@ class MediaHomePage extends Page {
     }
 
     /**
-     * Helper Method for create default records
+     * Helper Method for creating default records
      * @param  string $type                [description]
      * @param  string $title               [description]
      * @param  string $sort                [description]
