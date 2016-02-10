@@ -9,38 +9,6 @@ class MediaHomePage extends Page {
         'VideosHolder'
     );
 
-    private static $extensions = array(
-        'ExcludeChildren',
-    );
-
-    private static $excluded_children = array(
-        'MediaPage'
-    );
-
-    public function Media() {
-        return DataList::create('MediaPage')->filter(array('ParentID' => $this->ID));
-    }
-
-    public function getCMSFields() {
-
-        $fields = parent::getCMSFields();
-
-        $fields->addFieldToTab(
-            'Root.Media',
-            GridField::create(
-                'Children',
-                'Media',
-                $this->Media(),
-                GridFieldConfig_RelationEditor::create()
-                    ->removeComponentsByType('GridFieldDetailForm')
-                    ->addComponent(new ChildPageGridFieldDetailForm)
-            )
-        );
-
-        return $fields;
-
-    }
-
     /**
      * Add default records to database.
      *
@@ -54,16 +22,20 @@ class MediaHomePage extends Page {
         if (SiteTree::config()->create_default_pages) {
 
             // create the other home pages
-            $home = $this->CreateDefaultPage('MediaHomePage', 'Media', 3, null, false, 'media', true);
-            $this->CreateDefaultPage('AlbumsHolder', 'Albums', 1, $home)
-                 ->CreateDefaultPage('ImagesHolder', 'Images', 2, $home)
-                 ->CreateDefaultPage('VideosHolder', 'Videos', 1, $home);
+            $this->createDefaultPages();
 
         }
 
         // call it on the parent
         parent::requireDefaultRecords();
 
+    }
+
+    public function createDefaultPages() {
+        $home = $this->CreateDefaultPage('MediaHomePage', 'Media', 3, null, false, 'media', true);
+        $this->CreateDefaultPage('AlbumsHolder', 'Albums', 1, $home)
+             ->CreateDefaultPage('ImagesHolder', 'Images', 2, $home)
+             ->CreateDefaultPage('VideosHolder', 'Videos', 1, $home);
     }
 
     /**
