@@ -16,7 +16,7 @@ class AlbumsHolder extends Page {
     );
 
     public function Albums() {
-        return DataList::create('VideoPage')->filter(array('ParentID' => $this->ID));
+        return DataList::create('AlbumPage')->filter(array('ParentID' => $this->ID));
     }
 
     public function getCMSFields() {

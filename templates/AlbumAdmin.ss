@@ -11,7 +11,7 @@
 			<div>
 				<label for="url"></label>
 				<input type="hidden" name="AlbumID" id="AlbumID">
-				<input type="text" name="url" id="url" placeholder="Start typing the name of the album">
+				<input type="text" name="q" id="q" placeholder="Start typing the name of the album">
 				<ul id="options"></ul>
 			</div>
 			<button>OK</button>

@@ -19,6 +19,6 @@ ShortcodeParser::get('default')->register(
 	['SSEmedableGalleryPageExtension', 'GalleryEmbedParser']
 );
 HtmlEditorConfig::get('cms')->enablePlugins(array(
-	'gallery_embed' => '../../../' . SS_EMBEDABLE_GALLERY_DIR . '/build/js/editor-plugin.js'
+	'gallery_embed' => '../../../' . SS_EMBEDABLE_GALLERY_DIR . '/assets/build/js/editor-plugin.js'
 ));
 HtmlEditorConfig::get('cms')->addButtonsToLine(2, 'gallery_embed');
