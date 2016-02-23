@@ -1,5 +1,5 @@
 (function() {
-    tinymce.create('tinymce.plugins.gallery_embed', {
+    tinymce.create('tinymce.plugins.album_embed', {
 
         init : function(ed, url) {
 
@@ -14,7 +14,7 @@
             });
 
             // add the button
-            ed.addButton ('gallery_embed', {
+            ed.addButton ('album_embed', {
                 'title' : 'Gallery Embed',
                 'image' : url + '/../img/icon.png',
                 'cmd': 'mceInsertGalleryEmbed',
@@ -32,5 +32,5 @@
         }
     });
 
-    tinymce.PluginManager.add('gallery_embed', tinymce.plugins.gallery_embed);
+    tinymce.PluginManager.add('album_embed', tinymce.plugins.album_embed);
 })();

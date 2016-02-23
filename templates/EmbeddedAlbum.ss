@@ -18,6 +18,6 @@
 			<a href="$Link" class="">
 				<img src="$Image.FocusFill(600,400)" alt="$Title">
 			</a>
-		<% end_with %>
+		<% end_loop %>
 	</div>
 </div>

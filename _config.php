@@ -15,10 +15,10 @@ Requirements::javascript(SS_EMBEDABLE_GALLERY_DIR . '/assets/build/js/lib.js');
 
 // add the embed functionality
 ShortcodeParser::get('default')->register(
-	'gallery_embed',
-	['SSEmedableGalleryPageExtension', 'GalleryEmbedParser']
+	'album_embed',
+	['SSEmedableGalleryPageExtension', 'AlbumEmbedParser']
 );
 HtmlEditorConfig::get('cms')->enablePlugins(array(
-	'gallery_embed' => '../../../' . SS_EMBEDABLE_GALLERY_DIR . '/assets/build/js/editor-plugin.js'
+	'album_embed' => '../../../' . SS_EMBEDABLE_GALLERY_DIR . '/assets/build/js/editor-plugin.js'
 ));
-HtmlEditorConfig::get('cms')->addButtonsToLine(2, 'gallery_embed');
+HtmlEditorConfig::get('cms')->addButtonsToLine(2, 'album_embed');

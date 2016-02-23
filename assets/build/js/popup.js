@@ -1,25 +1,41 @@
 (function($) {
+
+	'use strict';
+
 	$(function() {
 
 		// auto complete
 		$('#q').on('keyup', function(e) {
-			$el = $(this);
+
+			// get the element
+			var $el = $(this);
+
+			// make a get request to the json endpoint
 			$.get('/sseg-album-admin/albums?q=' + encodeURI($el.val()), function(data) {
-				var $wrap = $('#options');
+
+				// set som local vars
+				var $wrap = $('#options'), i;
+
+				// purge the previous content
 				$wrap.html('');
-				data.forEach(function(i) {
+
+				// loop through the data and build the options
+				for (i = 0; i < data.length; i++) {
+					var item = data[i];
 					$wrap.append(
 						$(
 							'<li>' +
-								'<a data-id="' + i.value + '">' + i.text + '</a>' +
+								'<a data-id="' + item.value + '">' + item.text + '</a>' +
 							'</li>'
 						)
 						.on('click', function() {
-							$('#AlbumID').val($(this).attr('data-id'));
+							var $link = $(this).find('a');
+							$('#AlbumID').val($link.attr('data-id'));
+							$('#q').val($link.text());
 							$wrap.html('');
 						})
 					);
-				});
+				}
 			});
 		});
 
@@ -30,10 +46,13 @@
 			e.preventDefault();
 
 			// generate the token
-			var token = '[social_embed,id="' + $('#AlbumID').val() + '"]';
+			var token = '[album_embed,id="' + $('#AlbumID').val() + '"]';
+			var replacement = '<div data-shortcode="' + token.replace(/"/g, '\'') + '">' + token + '</div>';
+
+			alert(replacement);
 
 			// insert the content
-			tinyMCEPopup.execCommand('mceInsertContent', false, token);
+			tinyMCEPopup.execCommand('mceInsertContent', false, replacement);
 
 			// Refocus in window
 			if (tinyMCEPopup.isWindow) window.focus();

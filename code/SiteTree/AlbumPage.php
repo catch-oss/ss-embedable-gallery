@@ -13,10 +13,6 @@ class AlbumPage extends Page {
         // parent
         parent::onBeforeWrite();
 
-
-        // parent
-        parent::onBeforeWrite();
-
         // find the media home page, if it doesn't exist - create it
         if (!$page = DataObject::get_one('AlbumsHolder')) {
 
