@@ -22,7 +22,7 @@ class SSEmedableGalleryPageExtension extends DataExtension {
      * @param [type] $tagName   [description]
      */
     public static function GalleryEmbedParser($arguments, $content = null, $parser = null, $tagName) {
-        $album = AlbumPage::get()->filter('ID' => $arguments['id'])->first();
+        $album = AlbumPage::get()->filter(['ID' => $arguments['id']])->first();
         return $album->renderWith('EmbeddedAlbum');
     }
 }
