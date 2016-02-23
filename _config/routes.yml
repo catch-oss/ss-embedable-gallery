@@ -1,0 +1,7 @@
+---
+Name: ss-embedable-gallery-routes
+After: framework/routes#coreroutes
+---
+Director:
+  rules:
+    sseg-album-admin: AlbumAdmin

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @todo make this more portable - i.e. either require some other module like abc-silverstripe-social or explicitly define has one images etc
+ */
 class ImagePage extends MediaPage {
 
     private static $can_be_root = false;

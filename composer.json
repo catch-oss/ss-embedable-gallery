@@ -15,7 +15,8 @@
         "composer/installers"                   : ">=1.0",
         "silverstripe/framework"                : ">=3.1",
         "silverstripe/cms"                      : ">=3.1",
-        "azt3k/abc-silverstripe"                : "*"
+        "azt3k/abc-silverstripe"                : "*",
+        "jonom/focuspoint"                      : ">=2.0"
     },
     "replace": {"catch/ss-embedable-gallery": "*"}
 

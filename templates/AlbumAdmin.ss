@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>Insert a Social Post</title>
+	    <script type="text/javascript" src="../../framework/thirdparty/jquery/jquery.js"></script>
+		<script type="text/javascript" src="../../framework/thirdparty/tinymce/tiny_mce_popup.js"></script>
+		<script type="text/javascript" src="/$ModuleDir/assets/build/js/popup.js"></script>
+	</head>
+	<body>
+		<form>
+			<div>
+				<label for="url"></label>
+				<input type="hidden" name="AlbumID" id="AlbumID">
+				<input type="text" name="url" id="url" placeholder="Start typing the name of the album">
+				<ul id="options"></ul>
+			</div>
+			<button>OK</button>
+		</form>
+	</body>
+</html>
