@@ -1,4 +1,4 @@
-(function() {
+(function($) {
     tinymce.create('tinymce.plugins.album_embed', {
 
         init : function(ed, url) {
@@ -19,6 +19,53 @@
                 'image' : url + '/../img/icon.png',
                 'cmd': 'mceInsertGalleryEmbed',
             });
+
+            // replace the markup with the short code on save
+            ed.onSaveContent.add(function(ed, o) {
+                var $content = $(o.content);
+                $content.find('.album-embed').each(function() {
+                    var $el = $(this);
+                    var shortCode = $el.attr('data-shortcode').replace(/'/g, '"');
+                    $el.replaceWith(shortCode);
+                });
+                o.content = $('<div />').append($content).html();
+            });
+
+            // replace the short code with markup on load
+            ed.onSetContent.add(function(ed, o) {
+
+                // parse the content
+                var re = /\[album_embed,id="([^"]+)"\]/gi,
+                    m = ed.getContent().match(re),
+                    i;
+
+                if (m) {
+
+                    // find all the matched
+                    for (i=0; i < m.length; i++) {
+
+                        // extract the match data
+                        var mCur = m[i],
+                            m2 = /id="([^"]+)"/.exec(mCur);
+                            id = m2[1];
+
+                        // get the fully parsed piece of html
+                        $.get('/sseg-album-admin/htmlfragment/' + id, function(data) {
+
+                            // ensure we have a common anscestor or it's all bad:
+                            data = '<div>' + data + '</div>';
+
+                            // generate the token / html
+                            var token = '[album_embed,id="' + id + '"]';
+                            var $html = $(data).attr('data-shortcode', token.replace(/"/g, '\''))
+                                               .addClass('album-embed');
+
+                            // replace
+                            ed.setContent(ed.getContent().replace(mCur, $('<div />').append($html).html()));
+                        });
+                    }
+                }
+            });
         },
 
         getInfo : function() {
@@ -33,4 +80,4 @@
     });
 
     tinymce.PluginManager.add('album_embed', tinymce.plugins.album_embed);
-})();
+})(jQuery);

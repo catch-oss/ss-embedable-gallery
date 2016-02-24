@@ -4,7 +4,8 @@ class AlbumAdmin extends Controller {
 
 	private static $allowed_actions = array(
 		'index',
-		'albums'
+		'albums',
+		'htmlfragment'
 	);
 
 	public function ModuleDir() {
@@ -37,5 +38,11 @@ class AlbumAdmin extends Controller {
 
 		$this->response->addHeader('Content-Type', 'application/json');
 		return json_encode($out);
+	}
+
+	public function htmlfragment() {
+		$id = (int) $this->request->param('ID');
+		$a = AlbumPage::get()->filter(['ID' => $id])->first();
+		return $a->renderWith('EmbeddedAlbum');
 	}
 }
