@@ -8,10 +8,7 @@ class AlbumPage extends Page {
         'Media' => 'MediaPage'
     );
 
-    public function onBeforeWrite() {
-
-        // parent
-        parent::onBeforeWrite();
+    public function handleParents() {
 
         // find the media home page, if it doesn't exist - create it
         if (!$page = DataObject::get_one('AlbumsHolder')) {
@@ -26,6 +23,16 @@ class AlbumPage extends Page {
 
         // set parent
         $this->ParentID = $page->ID;
+    }
+
+    public function validate() {
+        $this->handleParents();
+        return parent::validate();
+    }
+
+    public function onBeforeWrite() {
+        parent::onBeforeWrite();
+        $this->handleParents();
     }
 }
 

@@ -27,7 +27,7 @@ class ImagesHolder extends Page {
             'Root.Images',
             GridField::create(
                 'Children',
-                'Images',
+                'Image Pages',
                 $this->Images(),
                 GridFieldConfig_RelationEditor::create()
                     ->removeComponentsByType('GridFieldDetailForm')

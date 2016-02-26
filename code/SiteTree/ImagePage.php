@@ -7,10 +7,7 @@ class ImagePage extends MediaPage {
     private static $can_be_root = false;
     private static $allowed_children = 'none';
 
-    public function onBeforeWrite() {
-
-        // parent
-        parent::onBeforeWrite();
+    public function handleParents() {
 
         // find the media home page, if it doesn't exist - create it
         if (!$page = DataObject::get_one('ImagesHolder')) {
@@ -25,6 +22,16 @@ class ImagePage extends MediaPage {
 
         // set parent
         $this->ParentID = $page->ID;
+    }
+
+    public function validate() {
+        $this->handleParents();
+        return parent::validate();
+    }
+
+    public function onBeforeWrite() {
+        parent::onBeforeWrite();
+        $this->handleParents();
     }
 }
 
