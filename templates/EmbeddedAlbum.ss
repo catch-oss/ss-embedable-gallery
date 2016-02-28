@@ -1,6 +1,5 @@
-<!--  these class names are not so awesome -->
 <div class="embedded-album">
-	<div class="embedded-album__feature icon-search icon-magnify">
+	<div class="embedded-album__feature">
 		<% with $Media.First %>
 			<a href="$Link" class="">
 				<img src="$Image.FocusFill(600,400).Link" alt="$Title">
@@ -14,7 +13,7 @@
 		</div>
 	</div>
 	<div class="embedded-album__extra">
-		<% loop $Media.Limit(1,4) %>
+		<% loop $Media.Limit(4,1) %>
 			<a href="$Link" class="">
 				<img src="$Image.FocusFill(600,400).Link" alt="$Title">
 			</a>

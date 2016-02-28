@@ -8,6 +8,33 @@ class AlbumPage extends Page {
         'Media' => 'MediaPage'
     );
 
+    private static $many_many_extraFields = array(
+        'Media' => array(
+            'SortOrder' => 'Int',
+            'InvSortOrder' => 'Int'
+        ),
+    );
+
+    public function getCMSFields() {
+        $fields = parent::getCMSFields();
+
+        // Add the gridfield
+        $fields->addFieldToTab(
+            'Root.Media',
+            new GridField(
+                'Media',
+                'Media',
+                $this->Media(),
+                GridFieldConfig_RelationEditor::create()
+                    ->addComponent(new GridFieldSortableRows('SortOrder'))
+                    ->removeComponentsByType('GridFieldDetailForm')
+                    ->addComponent(new VersionedGridFieldDetailForm)
+            )
+        );
+
+        return $fields;
+    }
+
     public function handleParents() {
 
         // find the media home page, if it doesn't exist - create it

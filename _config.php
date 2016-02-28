@@ -23,8 +23,9 @@ HtmlEditorConfig::get('cms')->enablePlugins(array(
 ));
 HtmlEditorConfig::get('cms')->addButtonsToLine(2, 'albumEmbed');
 
+$styleSheets = HtmlEditorConfig::get('cms')->getOption('content_css');
 HtmlEditorConfig::get('cms')->setOption(
 	'content_css',
-	HtmlEditorConfig::get('cms')->getOption('content_css') . ',' .
+	($styleSheets ?: '/themes/' . SSViewer::current_theme() . '/css/editor.css') . ',' .
 	SS_EMBEDABLE_GALLERY_DIR . '/assets/build/css/main.css'
 );

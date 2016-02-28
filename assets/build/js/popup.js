@@ -48,7 +48,7 @@
                                                    .addClass('album-embed');
 
                                 // inject fragment
-                                $('.preview').html($html);
+                                $('#preview').html($html);
                             });
                         })
                     );
