@@ -1,0 +1,56 @@
+.embedded-album {
+	margin-top: 60px;
+	margin-bottom: 50px;
+
+	// thumbnail
+	&__feature {
+		position: relative;
+		max-width: 580px;
+		height: 100%;
+
+		a {
+			display: block;
+			height: 100%;
+
+			img {
+				height: 100%;
+			}
+		}
+
+		&__copy {
+			background-color: colour("primary");
+			color: colour("lightest");
+			padding: 20px;
+
+			p {
+				margin-top: 0;
+				margin-bottom: 20px;
+				font-size: 14px;
+				line-height: 22px;
+				font-weight: 500;
+			}
+
+			.credit {
+				color: colour("darkest");
+				margin-bottom: 0;
+			}
+		}// END copy
+
+		&__extra {
+			display: none;
+			width: 610px;
+			margin-left: 16px;
+
+			a {
+				width: 280px;
+				display: inline-block;
+				margin-bottom: 20px;
+				margin-right: 16px;
+
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+}

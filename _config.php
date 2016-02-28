@@ -19,6 +19,12 @@ ShortcodeParser::get('default')->register(
 	['SSEmedableGalleryPageExtension', 'AlbumEmbedParser']
 );
 HtmlEditorConfig::get('cms')->enablePlugins(array(
-	'album_embed' => '../../../' . SS_EMBEDABLE_GALLERY_DIR . '/assets/build/js/editor-plugin.js'
+	'albumEmbed' => '../../../' . SS_EMBEDABLE_GALLERY_DIR . '/assets/build/js/editor-plugin.js'
 ));
-HtmlEditorConfig::get('cms')->addButtonsToLine(2, 'album_embed');
+HtmlEditorConfig::get('cms')->addButtonsToLine(2, 'albumEmbed');
+
+HtmlEditorConfig::get('cms')->setOption(
+	'content_css',
+	HtmlEditorConfig::get('cms')->getOption('content_css') . ',' .
+	SS_EMBEDABLE_GALLERY_DIR . '/assets/build/css/main.css'
+);

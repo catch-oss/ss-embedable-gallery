@@ -1,9 +1,10 @@
 (function($) {
-    tinymce.create('tinymce.plugins.album_embed', {
+
+    'use strict';
+
+    tinymce.create('tinymce.plugins.albumEmbed', {
 
         init : function(ed, url) {
-
-            var self = this;
 
             // Register commands
             ed.addCommand('mceInsertGalleryEmbed', function() {
@@ -32,7 +33,7 @@
             });
 
             // replace the short code with markup on load
-            ed.onSetContent.add(function(ed, o) {
+            ed.onSetContent.add(function(ed) {
 
                 // parse the content
                 var re = /\[album_embed,id="([^"]+)"\]/gi,
@@ -46,7 +47,7 @@
 
                         // extract the match data
                         var mCur = m[i],
-                            m2 = /id="([^"]+)"/.exec(mCur);
+                            m2 = /id="([^"]+)"/.exec(mCur),
                             id = m2[1];
 
                         // get the fully parsed piece of html
@@ -74,10 +75,10 @@
                 author    : 'Me',
                 authorurl : 'http://www.catch.co.nz',
                 infourl   : 'http://gl.catch.co.nz/catch/ss-embedable-gallery',
-                version   : "0.1"
+                version   : '0.1'
             };
         }
     });
 
-    tinymce.PluginManager.add('album_embed', tinymce.plugins.album_embed);
+    tinymce.PluginManager.add('albumEmbed', tinymce.plugins.albumEmbed);
 })(jQuery);
