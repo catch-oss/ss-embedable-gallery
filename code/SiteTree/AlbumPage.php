@@ -16,6 +16,7 @@ class AlbumPage extends Page {
     );
 
     public function getCMSFields() {
+
         $fields = parent::getCMSFields();
 
         // Add the gridfield
