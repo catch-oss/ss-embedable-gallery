@@ -1,5 +1,4 @@
 .embedded-album {
-	margin-top: 60px;
 	padding-bottom: 50px;
 	overflow: auto;
 
@@ -47,7 +46,7 @@
 
 		a {
 			// width: 280px;
-			width: 44%;
+			width: 47%;
 			// margin: 0 3% 3%;
 			margin-bottom: 3%;
 			margin-left: 3%;
@@ -74,12 +73,11 @@
 
 	.embedded-album {
 		// height: 394px;
-		margin-top: 85px;
 		padding-bottom: 105px;
 
 		&__feature {
 			// display: inline-block;
-			width: 50%;
+			width: 49.3%;
 			float: left;
 
 			&__copy {
