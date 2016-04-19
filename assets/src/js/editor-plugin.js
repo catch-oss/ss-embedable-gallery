@@ -31,7 +31,15 @@
                     var shortCode = $el.attr('data-shortcode').replace(/'/g, '"');
                     $el.replaceWith(shortCode);
                 });
-                o.content = $('<div />').append($content).html();
+
+                // get the content string
+                var content = $('<div />').append($content).html();
+
+                // make sure we don't have a bung p tag
+                if (content.replace(/^\s+|\s+$/g, '') == '<p>&nbsp;</p>') content = '';
+
+                // set the content;
+                o.content = content;
             });
 
             // replace the short code with markup on load
