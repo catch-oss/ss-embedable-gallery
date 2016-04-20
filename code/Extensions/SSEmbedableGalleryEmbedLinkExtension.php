@@ -7,7 +7,6 @@ class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
     );
 
     public function updateCMSFields(FieldList $fields) {
-        die('wt');
         parent::updateCMSFields($fields);
         $fields->addFieldToTab('Root.Media', new TextField('EmbedLink', 'Embed Link'));
     }
