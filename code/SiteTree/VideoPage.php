@@ -5,7 +5,7 @@ class VideoPage extends MediaPage {
     private static $allowed_children = 'none';
 
     private static $extensions = array(
-        'SSEmbedableGalleryLeftAndMainExtension'
+        'SSEmbedableGalleryEmbedLinkExtension'
     );
 
     public function handleParents() {

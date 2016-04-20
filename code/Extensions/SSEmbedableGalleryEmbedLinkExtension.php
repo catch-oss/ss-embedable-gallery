@@ -1,12 +1,13 @@
 <?php
 
-class EmbedLinkExtension extends DataExtension {
+class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
 
     private static $db = array(
         'EmbedLink'     => 'Varchar(255)',
     );
 
     public function updateCMSFields(FieldList $fields) {
+        die('wt');
         parent::updateCMSFields($fields);
         $fields->addFieldToTab('Root.Media', new TextField('EmbedLink', 'Embed Link'));
     }
