@@ -4,6 +4,10 @@ class VideoPage extends MediaPage {
     private static $can_be_root = false;
     private static $allowed_children = 'none';
 
+    private static $extensions = array(
+        'SSEmbedableGalleryLeftAndMainExtension'
+    );
+
     public function handleParents() {
 
         // find the media home page, if it doesn't exist - create it
