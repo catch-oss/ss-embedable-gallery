@@ -11,6 +11,10 @@ class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
         $fields->addFieldToTab('Root.Media', new TextField('EmbedLink', 'Embed Link'));
     }
 
+    public function is_ie() {
+        return preg_match('/MSIE/i', $_SERVER['HTTP_USER_AGENT']);
+    }
+
     protected function embedData($id = null, $autoplay = true) {
 
         // init reciever
