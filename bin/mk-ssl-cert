@@ -1,0 +1,12 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if (( "$#" != 1 ))
+then
+    IN=keys/ssl
+else
+    IN=$1
+fi
+
+mkdir -p $DIR/../ssl
+openssl x509 -req -days 365 -in $DIR/../ssl/ssl.csr -signkey $DIR/../$IN/private.key -out $DIR/../ssl/ssl.crt

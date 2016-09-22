@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if (( "$#" != 1 ))
+then
+    OUT=keys/ssl
+else
+    OUT=$1
+fi
+
+mkdir -p $DIR/../$OUT
+openssl genrsa -out $DIR/../$OUT/private.key 2048
+openssl rsa -in $DIR/../$OUT/private.key -pubout > $DIR/../$OUT/public.key
