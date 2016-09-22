@@ -19,18 +19,10 @@
 		}
 	}],
 	"require": {
-        "composer/installers": "dev-master",
-		"firebase/php-jwt": "*@stable",
+        "composer/installers": "*",
+		"firebase/php-jwt": "*",
 		"php": ">=5.4",
-		"phpmailer/phpmailer": "*@stable",
-		"silverstripe/cms": "3.1.*@stable",
-		"silverstripe/crontask": "@stable",
-		"silverstripe/framework": "3.1.*@stable",
-		"silverstripe/queuedjobs": "2.2.*@stable",
-		"silverstripe-australia/gridfieldextensions": "*@stable",
-		"unclecheese/betterbuttons": "dev-master",
-		"unclecheese/display-logic": "1.2.2",
-		"undefinedoffset/sortablegridfield": "dev-master"
+		"silverstripe/framework": "*"
 	},
 	"require-dev": {
 		"phpunit/PHPUnit": "~3.7@stable",
