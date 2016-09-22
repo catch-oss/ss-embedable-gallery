@@ -1,6 +1,7 @@
 {
 	"name": "catch/ss-api-interface",
 	"description": "Base Library for API Clients / Servers primarily JWT",
+    "type": "silverstripe-module",
 	"repositories": [{
 	}, {
 		"type": "package",
