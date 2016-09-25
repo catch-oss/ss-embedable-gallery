@@ -120,7 +120,7 @@ class JWTHelper extends Object {
                 throw new Exception('Cannot find key directory ' . $conf->keyDir);
 
         // normalise token
-        $token = preg_replace('/[^A-Za-z0-9]+/', '-', strtolower($token));
+        $token = preg_replace('/[^A-Za-z0-9\/]+/', '-', strtolower($token));
 
         // generate full path to key
         $keyPath = $path . '/' . $token . '/' . $type . '.key';
