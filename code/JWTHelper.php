@@ -141,6 +141,13 @@ class JWTHelper extends Object {
         return Utils::gen_uuid();
     }
 
+    public static function extract($token) {
+        $parts = explode('.', $token);
+        return (object) [
+            'header' => json_decode(base64_decode($parts[0])),
+            'payload' => json_decode(base64_decode($parts[1]))
+        ];
+    }
 
     /**
      * [decodeJWT description]
