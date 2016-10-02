@@ -1,6 +1,6 @@
 <?php
 
-class Utils extends Object {
+class APIUtils extends Object {
 
     /**
      * [check_ip description]
