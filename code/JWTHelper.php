@@ -73,7 +73,7 @@ class JWTHelper extends Object {
      *  @return array the merged array
      */
     public static function array_merge_recursive_distinct(array $array1, array $array2) {
-        return APIUtilsarray_merge_recursive_distinct($array1, $array2);
+        return APIUtils::array_merge_recursive_distinct($array1, $array2);
     }
 
 
@@ -138,7 +138,7 @@ class JWTHelper extends Object {
      * @return string
      */
     public static function gen_uuid() {
-        return APIUtilsgen_uuid();
+        return APIUtils::gen_uuid();
     }
 
     public static function extract($token) {

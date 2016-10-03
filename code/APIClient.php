@@ -221,7 +221,7 @@ abstract class APIClient extends Object {
 
             // prepare call
             $ep         = $this->endpoint($resource, $method);
-            $txId       = APIUtilsgen_uuid();
+            $txId       = APIUtils::gen_uuid();
             $reqPayload = $this->prepareRequestPayload($resource, $method, $reqPayload, $txId);
 
             // make call
