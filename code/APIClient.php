@@ -71,7 +71,7 @@ abstract class APIClient extends Object {
      * @return void
      */
     protected static function set_conf_from_yaml() {
-        $conf = (array) Config::inst()->get(__CLASS__, 'conf');
+        $conf = (array) Config::inst()->get(get_called_class(), 'conf');
         if (!empty($conf))
             static::$conf = static::array_merge_recursive_distinct(static::$conf, $conf);
     }
@@ -123,21 +123,6 @@ abstract class APIClient extends Object {
     public function setDebug($flag) {
         static::$conf['debug'] = $flag;
         return $this;
-    }
-
-    // ----
-    // KEYS
-    // ----
-
-    /**
-     * Gets a public or private key
-     * @param  string $token    ISS or token name e.g. 'financial' or 'Catch Development'
-     * @param  string $type     'public' or 'private'
-     * @return string           the key
-     * @throws Exception        can't find the key directory
-     */
-    public function getKey($token, $type) {
-        return JWTHelper::inst()->getKey($token, $type);
     }
 
     // --------

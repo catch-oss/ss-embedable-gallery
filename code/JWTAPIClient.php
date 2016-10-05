@@ -77,7 +77,8 @@ abstract class JWTAPIClient extends APIClient {
      * @throws Exception        can't find the key directory
      */
     public function getKey($token, $type) {
-        return JWTHelper::inst()->getKey($token, $type);
+        $conf = static::get_conf();
+        return JWTHelper::inst()->getKey($token, $type, $conf->keyDir);
     }
 
     // --------

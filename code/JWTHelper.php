@@ -109,15 +109,18 @@ class JWTHelper extends Object {
      * @return string           the key
      * @throws Exception        can't find the key directory
      */
-    public function getKey($token, $type) {
+    public function getKey($token, $type, $keyDirOR = null) {
 
         // get conf
         $conf = static::get_conf();
 
+        // get the dir
+        $dir = $keyDirOR ? $keyDirOR : $conf->keyDir;
+
         // get key path
-        if (!is_dir($path = APP_PATH . '/' . $conf->keyDir))
-            if (!is_dir($path = PUBLIC_PATH . '/' . $conf->keyDir))
-                throw new Exception('Cannot find key directory ' . $conf->keyDir);
+        if (!is_dir($path = APP_PATH . '/' . $dir))
+            if (!is_dir($path = PUBLIC_PATH . '/' . $dir))
+                throw new Exception('Cannot find key directory ' . $dir);
 
         // normalise token
         $token = preg_replace('/[^A-Za-z0-9\/]+/', '-', strtolower($token));
