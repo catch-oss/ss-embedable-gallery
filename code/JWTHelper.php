@@ -130,7 +130,7 @@ class JWTHelper extends Object {
 
         // validate
         if (!is_file($keyPath))
-            throw new Exception('Cannot find key ' . $keyPath);
+            throw new Exception('Cannot find key for token ' . $token);
 
         // return
         return file_get_contents($keyPath);
