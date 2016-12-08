@@ -35,15 +35,15 @@ abstract class APIClient extends Object {
         'baseUrl'       => null,
     ];
 
-	/**
-	 * this is used to identify the API
-	 */
-	abstract public static function APIID();
+    /**
+     * this is used to identify the API
+     */
+    abstract public static function APIID();
 
-	/**
-	 * this is used to identify the API
-	 */
-	abstract public static function resources();
+    /**
+     * this is used to identify the resources provided by the API
+     */
+    abstract public static function resources();
 
     /**
      * [validate_resource_method description]
@@ -139,7 +139,7 @@ abstract class APIClient extends Object {
     abstract protected function endpoint($resource, $method);
 
     /**
-     * make a request to a location with the provided payload via cURL
+     * make a request to a location with the provided payload
      * @param  [type] $url     [description]
      * @param  [type] $payload [description]
      * @return [type]          [description]
@@ -180,7 +180,7 @@ abstract class APIClient extends Object {
      * @param  [type] $txId       [description]
      * @return $this
      */
-    abstract protected function validateResponse($resource, $method, $jwt, $txId);
+    abstract protected function validateResponse($resource, $method, $resPayload, $txId);
 
     /**
      * [call description]
@@ -225,7 +225,7 @@ abstract class APIClient extends Object {
             $resPayload = (object) [
                 'status'    => 'error',
                 'info'      => [
-                    'code'      => 500,
+                    'code'      => $e->getCode() ?: 500,
                     'message'   => $e->getMessage()
                 ]
             ];
