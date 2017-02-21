@@ -130,7 +130,7 @@ abstract class JWTAPIClient extends APIClient {
 
         // log any errors
         if (curl_errno($ch)) {
-            SS_Log::log(static::APIID() . ' API Request Error: ' . curl_error($ch), SS_Log::DEBUG);
+            CLog::log(static::APIID() . ' API Request Error: ' . curl_error($ch), CLog::DEBUG);
         }
 
         // cleanup
@@ -143,7 +143,7 @@ abstract class JWTAPIClient extends APIClient {
             $dbg.= $envelope . "\n";
             $dbg.= "\n";
             if ($conf->printDebug) echo $dbg;
-            else SS_Log::log($dbg, SS_Log::DEBUG);
+            else CLog::log($dbg, CLog::DEBUG);
         }
 
         // return output
@@ -207,7 +207,7 @@ abstract class JWTAPIClient extends APIClient {
             $dbg.= print_r($token, 1);
             $dbg.= "\n\n";
             if ($conf->printDebug) echo $dbg;
-            else SS_Log::log($dbg, SS_Log::DEBUG);
+            else CLog::log($dbg, CLog::DEBUG);
         }
 
         // generate envelope and encoded jwt
@@ -220,7 +220,7 @@ abstract class JWTAPIClient extends APIClient {
             $dbg.= $envelope . "\n";
             $dbg.= "\n";
             if ($conf->printDebug) echo $dbg;
-            else SS_Log::log($dbg, SS_Log::DEBUG);
+            else CLog::log($dbg, CLog::DEBUG);
 
         }
 
@@ -265,7 +265,7 @@ abstract class JWTAPIClient extends APIClient {
             $dbg.= print_r($resPayload, 1);
             $dbg.= "\n\n";
             if ($conf->printDebug) echo $dbg;
-            else SS_Log::log($dbg, SS_Log::DEBUG);
+            else CLog::log($dbg, CLog::DEBUG);
         }
 
         // extract payload (does some validation)

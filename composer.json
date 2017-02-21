@@ -3,6 +3,8 @@
 	"description": "Base Library for API Clients / Servers primarily JWT",
     "type": "silverstripe-module",
 	"repositories": [{
+		"type": "vcs",
+		"url": "git@gl.catch.co.nz:catch/ss-logger.git"
 	}, {
 		"type": "package",
 		"package": {
@@ -21,6 +23,7 @@
 	}],
 	"require": {
         "composer/installers": "*",
+		"catch/ss-logger": "*",
 		"firebase/php-jwt": "*",
 		"php": ">=5.4",
 		"silverstripe/framework": "*"

@@ -91,7 +91,7 @@ abstract class APIClient extends Object {
      *  @return array the merged array
      */
     public static function array_merge_recursive_distinct(array $array1, array $array2) {
-        return JWTHelper::array_merge_recursive_distinct($array1, $array2);
+        return APIUtils::array_merge_recursive_distinct($array1, $array2);
     }
 
 
@@ -231,7 +231,7 @@ abstract class APIClient extends Object {
             ];
 
             // log the error
-            SS_Log::log(static::APIID() . ' API Exception: ' . $e->getMessage(), SS_Log::DEBUG);
+            CLog::log(static::APIID() . ' API Exception: ' . $e->getMessage(), CLog::DEBUG);
         }
 
         // return
