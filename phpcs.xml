@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<ruleset name="CatchSilverStripe">
+
+	<description>The Catch SilverStripe coding standard.</description>
+
+	<!-- Customise the PSR-2 standard -->
+	<rule ref="PSR2">
+
+		<!-- allow nicer if statements -->
+		<exclude name="Generic.ControlStructures.InlineControlStructure" />
+
+		<!-- disable "The CASE body must start on the line following the statement" -->
+		<exclude name="PSR2.ControlStructures.SwitchDeclaration" />
+
+		<!-- allow opening brace to be on the same line - id prefer forcing a single space before the brace -->
+		<exclude name="Squiz.WhiteSpace.FunctionOpeningBraceSpace" />
+		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman" />
+		<exclude name="PEAR.Classes.ClassDeclaration" />
+		<exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine" />
+		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" />
+
+		<!-- disable forced namespacing -->
+		<exclude name="PSR1.Classes.ClassDeclaration" />
+
+		<!-- static variables / methods should be snake case - need to enforce this somehow -->
+		<exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
+
+		<!-- allow else to be on a new line after if -->
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
+
+		<!-- Silverstripe allows multiple classes per file with the _ seperator -->
+		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
+
+		<!-- allow nicer else if -->
+		<exclude name="PSR2.ControlStructures.ElseIfDeclaration.NotAllowed" />
+
+	</rule>
+
+	<!-- Customise the Silverstripe Standard -->
+	<rule ref="SilverStripe">
+
+		<!-- allow nicer if statements -->
+		<exclude name="SilverStripe.ControlStructures.InlineControlStructure.NotAllowed" />
+
+		<!-- allow concatenated strings - helps with keeping line length down -->
+		<exclude name="Generic.Strings.UnnecessaryStringConcat.Found" />
+
+	</rule>
+
+	<!-- restrict use of double quotes -->
+	<rule ref="Squiz.Strings.DoubleQuoteUsage" />
+
+	<!-- function opening brace on same line -->
+	<rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
+
+	<!-- forces spaces around concatenators -->
+	<rule ref="Squiz.Strings.ConcatenationSpacing">
+		<properties>
+			<property name="spacing" value="1"/>
+			<property name="ignoreNewlines" value="true"/>
+		</properties>
+	</rule>
+
+</ruleset>

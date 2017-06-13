@@ -35,23 +35,23 @@ abstract class JWTAPIClient extends APIClient {
         'baseUrl'       => null,
     ];
 
-	/**
-	 * [validate_resource_method description]
-	 * @param  [type] $resource [description]
-	 * @param  [type] $method   [description]
-	 * @return void
-	 * @throws Exception
-	 */
-	protected static function validate_resource_method($resource, $method) {
+    /**
+     * [validate_resource_method description]
+     * @param  [type] $resource [description]
+     * @param  [type] $method   [description]
+     * @return void
+     * @throws Exception
+     */
+    public static function validate_resource_method($resource, $method) {
 
-		// get the resource list
-		$resources = static::resources();
+        // get the resource list
+        $resources = static::resources();
 
         // sanity check
         if (!array_key_exists($resource, $resources))   throw new Exception('Resource not found');
         if (!in_array($method, $resources[$resource]))  throw new Exception('Method not found');
-		return true;
-	}
+        return true;
+    }
 
     /**
      *  @return void
@@ -250,13 +250,13 @@ abstract class JWTAPIClient extends APIClient {
      * @param  [type] $resPayload [description]
      * @return array
      */
-    protected function prepareResponsePayload($resource, $method, $jwt) {
+    protected function prepareResponsePayload($resource, $method, $resPayload) {
 
         // load stuff
         $conf = static::get_conf();
 
         // extract data (does some validation)
-        $resPayload = $this->decodeJWT($jwt);
+        $resPayload = $this->decodeJWT($resPayload);
 
         // debug output
         if ($conf->debug) {
@@ -285,10 +285,10 @@ abstract class JWTAPIClient extends APIClient {
      * @param  [type] $txId       [description]
      * @return $this
      */
-    protected function validateResponse($resource, $method, $jwt, $txId) {
+    protected function validateResponse($resource, $method, $resPayload, $txId) {
 
         // JWT decode - validates on extraction throws SignatureInvalidException
-        $resPayload = $this->decodeJWT($jwt);
+        $resPayload = $this->decodeJWT($resPayload);
 
         return $this;
     }

@@ -1,0 +1,13 @@
+SapphireTest:
+  script:
+    - bash bin/test-clean
+    - bash bin/test-test
+  tags:
+    - silverstripe
+
+Quality:
+  script:
+    - bash bin/test-clean
+    - bash bin/test-qa
+  tags:
+    - silverstripe

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+PDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR=~/builds
+
+export DB=SQLITE
+
+rsync -avz --delete --exclude='.git' $PDIR/../ $DIR/ss-api-interface/ss/ss-api-interface/ && \
+bash $DIR/ss-api-interface/ss/framework/sake dev/tests/module/ss-api-interface

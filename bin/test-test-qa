@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR=~/builds/ss-api-interface
+
+export DB=SQLITE
+
+rm -rf $DIR/ss/ss-api-interface && \
+cp -rf $PDIR/.. $DIR/ss/ss-api-interface && \
+$DIR/ss/vendor/squizlabs/php_codesniffer/scripts/phpcs $DIR/ss/ss-api-interface

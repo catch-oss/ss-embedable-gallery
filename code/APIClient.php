@@ -5,7 +5,7 @@ use Firebase\JWT\JWT;
 /**
  * @Todo - off load some of this to the JWT Helper
  */
-abstract class APIClient extends Object {
+abstract class APIClient extends Object implements APIClientInterface {
 
     /**
      * [$inst description]
@@ -34,22 +34,6 @@ abstract class APIClient extends Object {
         'keyDir'        => null,
         'baseUrl'       => null,
     ];
-
-    /**
-     * this is used to identify the API
-     */
-    abstract public static function APIID();
-
-    /**
-     * this is used to identify the resources provided by the API
-     */
-    abstract public static function resources();
-
-    /**
-     * [validate_resource_method description]
-     * @return [type] [description]
-     */
-    abstract protected static function validate_resource_method($resource, $method);
 
     /**
      *  @param  array|object $conf An associative array containing the configuration - see self::$conf for an example
@@ -170,7 +154,7 @@ abstract class APIClient extends Object {
      * @param  [type] $resPayload [description]
      * @return array
      */
-    abstract protected function prepareResponsePayload($resource, $method, $jwt);
+    abstract protected function prepareResponsePayload($resource, $method, $resPayload);
 
     /**
      * [validateResponse description]

@@ -120,4 +120,19 @@ class APIUtils extends Object {
             mt_rand(0, 0xffff)
         );
     }
+
+    /**
+     * matches an ip against an ip range in CIDR format
+     * @param  String   $ip     the ip to test
+     * @param  String   $cidr   the range we are testing against
+     * @return Boolean          did the IP match?
+     */
+    public static function cidr_match($ip, $cidr) {
+
+        // convert CIDR expression in a subnet and a mask
+        list($subnet, $mask) = explode('/', $cidr);
+
+        // do the comparison and return the result
+        return (ip2long($ip) & ~((1 << (32 - $mask)) - 1) ) == ip2long($subnet);
+    }
 }

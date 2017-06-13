@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DIR=~/builds/ss-api-interface
+PDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+rm -rf $DIR/ss && \
+rm -rf $DIR/travis-support && \
+rm -f $PDIR/...tar
