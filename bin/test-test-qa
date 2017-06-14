@@ -7,4 +7,4 @@ export DB=SQLITE
 
 rm -rf $DIR/ss/ss-api-interface && \
 cp -rf $PDIR/.. $DIR/ss/ss-api-interface && \
-$DIR/ss/vendor/squizlabs/php_codesniffer/scripts/phpcs $DIR/ss/ss-api-interface
+$DIR/ss/vendor/squizlabs/php_codesniffer/scripts/phpcs $DIR/ss/ss-api-interface --warning-severity=0
