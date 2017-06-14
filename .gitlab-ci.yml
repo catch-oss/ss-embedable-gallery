@@ -1,7 +1,7 @@
 SapphireTest:
   script:
     - bash bin/test-clean
-    - bash bin/test-test
+    - bash bin/test
   tags:
     - silverstripe
 
