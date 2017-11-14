@@ -130,7 +130,15 @@ abstract class JWTAPIClient extends APIClient {
 
         // log any errors
         if (curl_errno($ch)) {
-            CLog::log(static::APIID() . ' API Request Error: ' . curl_error($ch), CLog::DEBUG);
+
+            // make the error str
+            $err = 'API Request Error: ' . curl_error($ch);
+
+            // log it
+            CLog::log(static::APIID() . ' ' . $err, CLog::DEBUG);
+
+            // throw an Excpetion
+            throw new Exception($err);
         }
 
         // cleanup
