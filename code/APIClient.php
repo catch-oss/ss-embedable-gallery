@@ -5,7 +5,7 @@ use Firebase\JWT\JWT;
 /**
  * @Todo - off load some of this to the JWT Helper
  */
-abstract class APIClient extends Object implements APIClientInterface {
+abstract class APIClient extends SS_Object implements APIClientInterface {
 
     /**
      * [$inst description]

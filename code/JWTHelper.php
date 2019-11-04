@@ -2,7 +2,7 @@
 
 use Firebase\JWT\JWT;
 
-class JWTHelper extends Object {
+class JWTHelper extends SS_Object {
 
     /**
      * [$inst description]
