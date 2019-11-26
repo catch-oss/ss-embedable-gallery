@@ -1,10 +1,22 @@
 <?php
+
+namespace CatchDesign\EmbedableGallery\SiteTree;
+
+use Page;
+use DataList;
+use GridField;
+use GridFieldConfig_RelationEditor;
+use ChildPageGridFieldDetailForm;
+use Page_Controller;
+use CatchDesign\EmbedableGallery\SiteTree\VideoPage;
+
+
 class VideosHolder extends Page {
 
     private static $can_be_root = false;
 
     private static $allowed_children = array(
-        'VideoPage'
+        VideoPage::class
     );
 
     private static $extensions = array(
@@ -12,11 +24,11 @@ class VideosHolder extends Page {
     );
 
     private static $excluded_children = array(
-        'VideoPage'
+        VideoPage::class
     );
 
     public function Videos() {
-        return DataList::create('VideoPage')->filter(array('ParentID' => $this->ID));
+        return DataList::create(VideoPage::class)->filter(array('ParentID' => $this->ID));
     }
 
     public function getCMSFields() {

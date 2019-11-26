@@ -1,27 +1,40 @@
 <?php
+
+namespace CatchDesign\EmbedableGallery\SiteTree;
+
+use Page;
+use FieldList;
+use TabSet;
+use ClassInfo;
+use DropdownField;
+use LiteralField;
+use Page_Controller;
+use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
+
+
 /**
  * @todo - this page needs to present an option to choose a subclass before it presents the actual edit form
  */
 class MediaPage extends Page {
 
     private static $belongs_many_many = array(
-        'Albums' => 'AlbumPage'
+        'Albums' => AlbumPage::class
     );
 
     function getCMSFields() {
 
         // make sure a media page isn't saved as a media page
-        if ($this->ClassName == 'MediaPage') {
+        if ($this->ClassName == MediaPage::class) {
 
             // clean slate
             $fields = new FieldList;
             $fields->push(new TabSet('Root'));
 
             // Generate Type Selector
-            $classes = ClassInfo::subclassesFor('MediaPage');
+            $classes = ClassInfo::subclassesFor(MediaPage::class);
             $list = array();
             foreach ($classes as $class) {
-                $list[$class] = $class == 'MediaPage' ? 'Please Select a Media Type' : $class;
+                $list[$class] = $class == MediaPage::class ? 'Please Select a Media Type' : $class;
             }
             $fields->addFieldToTab('Root.Main', new DropdownField('ClassName','Type', $list));
 

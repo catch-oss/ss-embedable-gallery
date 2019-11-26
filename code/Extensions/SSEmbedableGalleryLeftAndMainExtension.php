@@ -1,4 +1,10 @@
 <?php
+
+namespace CatchDesign\EmbedableGallery\Extensions;
+
+use Extension;
+use Requirements;
+
 class SSEmbedableGalleryLeftAndMainExtension extends Extension {
 
 	public function onAfterInit() {

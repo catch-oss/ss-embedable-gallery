@@ -1,5 +1,12 @@
 <?php
 
+namespace CatchDesign\EmbedableGallery\Extensions;
+
+use DataExtension;
+use FieldList;
+use TextField;
+
+
 class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
 
     private static $db = array(

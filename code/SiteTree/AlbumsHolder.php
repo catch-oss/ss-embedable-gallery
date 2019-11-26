@@ -1,10 +1,22 @@
 <?php
+
+namespace CatchDesign\EmbedableGallery\SiteTree;
+
+use Page;
+use DataList;
+use GridField;
+use GridFieldConfig_RelationEditor;
+use ChildPageGridFieldDetailForm;
+use Page_Controller;
+use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
+
+
 class AlbumsHolder extends Page {
 
     private static $can_be_root = false;
 
     private static $allowed_children = array(
-        'AlbumPage'
+        AlbumPage::class
     );
 
     private static $extensions = array(
@@ -12,11 +24,11 @@ class AlbumsHolder extends Page {
     );
 
     private static $excluded_children = array(
-        'AlbumPage'
+        AlbumPage::class
     );
 
     public function Albums() {
-        return DataList::create('AlbumPage')->filter(array('ParentID' => $this->ID));
+        return DataList::create(AlbumPage::class)->filter(array('ParentID' => $this->ID));
     }
 
     public function getCMSFields() {

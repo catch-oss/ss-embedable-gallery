@@ -1,5 +1,13 @@
 <?php
 
+namespace CatchDesign\EmbedableGallery\Extensions;
+
+use DataExtension;
+
+use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
+
+
+
 /**
  * @todo need reconcile removals in both directions
  * @todo remove PublicationFBUpdateID && PublicationTweetID as they aren't really needed any more - if testing for post just call $this->owner->PublicationTweets()->count()

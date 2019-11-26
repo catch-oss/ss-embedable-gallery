@@ -1,12 +1,25 @@
 <?php
+
+namespace CatchDesign\EmbedableGallery\SiteTree;
+
+use Page;
+use SiteTree;
+use DataObject;
+use DB;
+use Page_Controller;
+use CatchDesign\EmbedableGallery\SiteTree\AlbumsHolder;
+use CatchDesign\EmbedableGallery\SiteTree\ImagesHolder;
+use CatchDesign\EmbedableGallery\SiteTree\VideosHolder;
+
+
 class MediaHomePage extends Page {
 
     private static $can_be_root = true;
 
     private static $allowed_children = array(
-        'AlbumsHolder',
-        'ImagesHolder',
-        'VideosHolder'
+        AlbumsHolder::class,
+        ImagesHolder::class,
+        VideosHolder::class
     );
 
     /**
@@ -32,10 +45,10 @@ class MediaHomePage extends Page {
     }
 
     public function createDefaultPages() {
-        $home = $this->CreateDefaultPage('MediaHomePage', 'Media', 3, null, false, 'media', true);
-        $this->CreateDefaultPage('AlbumsHolder', 'Albums', 1, $home)
-             ->CreateDefaultPage('ImagesHolder', 'Images', 2, $home)
-             ->CreateDefaultPage('VideosHolder', 'Videos', 1, $home);
+        $home = $this->CreateDefaultPage(MediaHomePage::class, 'Media', 3, null, false, 'media', true);
+        $this->CreateDefaultPage(AlbumsHolder::class, 'Albums', 1, $home)
+             ->CreateDefaultPage(ImagesHolder::class, 'Images', 2, $home)
+             ->CreateDefaultPage(VideosHolder::class, 'Videos', 1, $home);
     }
 
     /**

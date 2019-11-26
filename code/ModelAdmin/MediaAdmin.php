@@ -1,5 +1,14 @@
 <?php
 
+namespace CatchDesign\EmbedableGallery\ModelAdmin;
+
+use ModelAdmin;
+use CatchDesign\EmbedableGallery\SiteTree\ImagePage;
+use CatchDesign\EmbedableGallery\SiteTree\VideoPage;
+use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
+
+
+
 class MediaPageAdmin extends ModelAdmin {
 
     /**
@@ -7,9 +16,9 @@ class MediaPageAdmin extends ModelAdmin {
      * @var array
      */
     private static $managed_models = array(
-        'ImagePage',
-        'VideoPage',
-        'AlbumPage'
+        ImagePage::class,
+        VideoPage::class,
+        AlbumPage::class
     );
 
     /**
