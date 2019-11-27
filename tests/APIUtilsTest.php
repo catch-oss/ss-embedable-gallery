@@ -1,5 +1,13 @@
 <?php
 
+namespace CatchDesign\SSAPInterfaceTest;
+
+use SapphireTest;
+
+use CatchDesign\SSAPInterface\APIUtils;
+
+
+
 class APIUtilsTest extends SapphireTest {
 
     public function testCIDRMatch() {

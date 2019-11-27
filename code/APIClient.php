@@ -1,12 +1,23 @@
 <?php
 
+namespace CatchDesign\SSAPInterface;
+use SilverStripe\Core\Extensible;
+use SilverStripe\Core\Injector\Injectable;
+use SilverStripe\Core\Config\Configurable;
+use CatchDesign\SSAPInterface\APIClientInterface;
 use Firebase\JWT\JWT;
+use Config;
+use Exception;
+use CLog;
+
 
 /**
  * @Todo - off load some of this to the JWT Helper
  */
-abstract class APIClient extends Object implements APIClientInterface {
-
+abstract class APIClient implements APIClientInterface {
+    use Extensible;
+    use Injectable;
+    use Configurable;
     /**
      * [$inst description]
      * @var [type]

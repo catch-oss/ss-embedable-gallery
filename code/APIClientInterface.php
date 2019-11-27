@@ -1,5 +1,10 @@
 <?php
 
+namespace CatchDesign\SSAPInterface;
+
+
+
+
 interface APIClientInterface {
 
     /**

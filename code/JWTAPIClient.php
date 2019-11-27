@@ -1,6 +1,12 @@
 <?php
 
+namespace CatchDesign\SSAPInterface;
+
+
 use Firebase\JWT\JWT;
+use Exception;
+use CLog;
+
 
 /**
  * @Todo - off load some of this to the JWT Helper

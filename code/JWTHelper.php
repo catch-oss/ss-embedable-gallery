@@ -1,8 +1,20 @@
 <?php
 
-use Firebase\JWT\JWT;
+namespace CatchDesign\SSAPInterface;
 
-class JWTHelper extends Object {
+use SilverStripe\Core\Extensible;
+use SilverStripe\Core\Injector\Injectable;
+use SilverStripe\Core\Config\Configurable;
+
+use Firebase\JWT\JWT;
+use Config;
+use Exception;
+
+class JWTHelper {
+
+    use Extensible;
+    use Injectable;
+    use Configurable;
 
     /**
      * [$inst description]

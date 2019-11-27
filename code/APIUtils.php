@@ -1,7 +1,17 @@
 <?php
 
-class APIUtils extends Object {
+namespace CatchDesign\SSAPInterface;
 
+
+use SilverStripe\Core\Extensible;
+use SilverStripe\Core\Injector\Injectable;
+use SilverStripe\Core\Config\Configurable;
+
+class APIUtils {
+
+    use Extensible;
+    use Injectable;
+    use Configurable;
     /**
      * [check_ip description]
      * @param  [type] $ip [description]

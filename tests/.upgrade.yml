@@ -1,0 +1,7 @@
+mappings:
+  APIUtilsTest: CatchDesign\SSAPInterfaceTest\APIUtilsTest
+  APIClientInterface: CatchDesign\SSAPInterface\APIClientInterface
+  JWTAPIClient: CatchDesign\SSAPInterface\JWTAPIClient
+  APIClient: CatchDesign\SSAPInterface\APIClient
+  JWTHelper: CatchDesign\SSAPInterface\JWTHelper
+  APIUtils: CatchDesign\SSAPInterface\APIUtils
