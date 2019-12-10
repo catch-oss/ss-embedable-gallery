@@ -2,10 +2,9 @@
 
 namespace CatchDesign\EmbedableGallery\Extensions;
 
-use DataExtension;
-use FieldList;
-use TextField;
-
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\ORM\DataExtension;
 
 class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
 

@@ -2,14 +2,15 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-use Page;
-use FieldList;
-use TabSet;
-use ClassInfo;
-use DropdownField;
-use LiteralField;
-use Page_Controller;
+use \Page;
 use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TabSet;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\LiteralField;
+use \PageController;
+
 
 
 /**
@@ -58,5 +59,5 @@ class MediaPage extends Page {
     }
 }
 
-class MediaPage_Controller extends Page_Controller{
+class MediaPage_Controller extends PageController{
 }

@@ -2,13 +2,16 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-use Page;
-use DataList;
-use GridField;
-use GridFieldConfig_RelationEditor;
-use ChildPageGridFieldDetailForm;
-use Page_Controller;
+use \Page;
+
+use Azt3k\SS\Forms\ChildPageGridFieldDetailForm;
 use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
+use SilverStripe\ORM\DataList;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\Forms\GridField\GridField;
+use PageController;
+
 
 
 class AlbumsHolder extends Page {
@@ -42,7 +45,7 @@ class AlbumsHolder extends Page {
                 'Albums',
                 $this->Albums(),
                 GridFieldConfig_RelationEditor::create()
-                    ->removeComponentsByType('GridFieldDetailForm')
+                    ->removeComponentsByType(GridFieldDetailForm::class)
                     ->addComponent(new ChildPageGridFieldDetailForm)
             )
         );
@@ -52,5 +55,5 @@ class AlbumsHolder extends Page {
     }
 }
 
-class AlbumsHolder_Controller extends Page_Controller {
+class AlbumsHolder_Controller extends PageController {
 }

@@ -2,14 +2,11 @@
 
 namespace CatchDesign\EmbedableGallery\Controllers;
 
-use Controller;
-use Permission;
-use Security;
-
-use Convert;
 use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
-
-
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
+use SilverStripe\Core\Convert;
+use SilverStripe\Control\Controller;
 
 class AlbumAdmin extends Controller {
 

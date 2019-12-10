@@ -2,10 +2,12 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-use DataObject;
+
 use CatchDesign\EmbedableGallery\Extensions\SSEmbedableGalleryEmbedLinkExtension;
 use CatchDesign\EmbedableGallery\SiteTree\VideosHolder;
 use CatchDesign\EmbedableGallery\SiteTree\MediaHomePage;
+use SilverStripe\ORM\DataObject;
+
 
 
 class VideoPage extends MediaPage {

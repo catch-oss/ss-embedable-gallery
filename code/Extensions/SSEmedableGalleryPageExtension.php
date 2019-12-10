@@ -2,11 +2,8 @@
 
 namespace CatchDesign\EmbedableGallery\Extensions;
 
-use DataExtension;
-
 use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
-
-
+use SilverStripe\ORM\DataExtension;
 
 /**
  * @todo need reconcile removals in both directions

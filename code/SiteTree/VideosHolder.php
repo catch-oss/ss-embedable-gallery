@@ -2,13 +2,15 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-use Page;
-use DataList;
-use GridField;
-use GridFieldConfig_RelationEditor;
-use ChildPageGridFieldDetailForm;
-use Page_Controller;
+use \Page;
+use Azt3k\SS\Forms\ChildPageGridFieldDetailForm;
 use CatchDesign\EmbedableGallery\SiteTree\VideoPage;
+use SilverStripe\ORM\DataList;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\Forms\GridField\GridField;
+use \PageController;
+
 
 
 class VideosHolder extends Page {
@@ -42,7 +44,7 @@ class VideosHolder extends Page {
                 'Videos',
                 $this->Videos(),
                 GridFieldConfig_RelationEditor::create()
-                    ->removeComponentsByType('GridFieldDetailForm')
+                    ->removeComponentsByType(GridFieldDetailForm::class)
                     ->addComponent(new ChildPageGridFieldDetailForm)
             )
         );
@@ -52,5 +54,5 @@ class VideosHolder extends Page {
     }
 }
 
-class VideosHolder_Controller extends Page_Controller {
+class VideosHolder_Controller extends PageController {
 }

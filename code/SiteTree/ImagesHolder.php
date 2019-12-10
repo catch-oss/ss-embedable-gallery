@@ -2,14 +2,15 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-use Page;
-use DataList;
-use GridField;
-use GridFieldConfig_RelationEditor;
-use ChildPageGridFieldDetailForm;
-use Page_Controller;
-use CatchDesign\EmbedableGallery\SiteTree\ImagePage;
+use \Page;
 
+use Azt3k\SS\Forms\ChildPageGridFieldDetailForm;
+use CatchDesign\EmbedableGallery\SiteTree\ImagePage;
+use SilverStripe\ORM\DataList;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\Forms\GridField\GridField;
+use \PageController;
 
 class ImagesHolder extends Page {
 
@@ -42,7 +43,7 @@ class ImagesHolder extends Page {
                 'Image Pages',
                 $this->Images(),
                 GridFieldConfig_RelationEditor::create()
-                    ->removeComponentsByType('GridFieldDetailForm')
+                    ->removeComponentsByType(GridFieldDetailForm::class)
                     ->addComponent(new ChildPageGridFieldDetailForm)
             )
         );
@@ -52,5 +53,5 @@ class ImagesHolder extends Page {
     }
 }
 
-class ImagesHolder_Controller extends Page_Controller {
+class ImagesHolder_Controller extends PageController {
 }

@@ -2,8 +2,8 @@
 
 namespace CatchDesign\EmbedableGallery\Extensions;
 
-use Extension;
-use Requirements;
+use SilverStripe\View\Requirements;
+use SilverStripe\Core\Extension;
 
 class SSEmbedableGalleryLeftAndMainExtension extends Extension {
 

@@ -2,15 +2,14 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-use Page;
-use SiteTree;
-use DataObject;
-use DB;
-use Page_Controller;
+use \Page;
 use CatchDesign\EmbedableGallery\SiteTree\AlbumsHolder;
 use CatchDesign\EmbedableGallery\SiteTree\ImagesHolder;
 use CatchDesign\EmbedableGallery\SiteTree\VideosHolder;
-
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
+use \PageController;
 
 class MediaHomePage extends Page {
 
@@ -94,5 +93,5 @@ class MediaHomePage extends Page {
 
 }
 
-class MediaHomePage_Controller extends Page_Controller {
+class MediaHomePage_Controller extends PageController {
 }

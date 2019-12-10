@@ -2,10 +2,9 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-use DataObject;
 use CatchDesign\EmbedableGallery\SiteTree\ImagesHolder;
 use CatchDesign\EmbedableGallery\SiteTree\MediaHomePage;
-
+use SilverStripe\ORM\DataObject;
 
 /**
  * @todo make this more portable - i.e. either require some other module like abc-silverstripe-social or explicitly define has one images etc

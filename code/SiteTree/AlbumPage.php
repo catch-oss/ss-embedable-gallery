@@ -2,16 +2,18 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-use Page;
-use GridField;
-use GridFieldConfig_RelationEditor;
-use GridFieldSortableRows;
-use VersionedGridFieldDetailForm;
-use DataObject;
-use Page_Controller;
+use \Page;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use CatchDesign\EmbedableGallery\SiteTree\MediaPage;
 use CatchDesign\EmbedableGallery\SiteTree\AlbumsHolder;
 use CatchDesign\EmbedableGallery\SiteTree\MediaHomePage;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\Versioned\VersionedGridFieldDetailForm;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\ORM\DataObject;
+use \PageController;
+
 
 
 class AlbumPage extends Page {
@@ -43,7 +45,7 @@ class AlbumPage extends Page {
                 $this->Media(),
                 GridFieldConfig_RelationEditor::create()
                     ->addComponent(new GridFieldSortableRows('SortOrder'))
-                    ->removeComponentsByType('GridFieldDetailForm')
+                    ->removeComponentsByType(GridFieldDetailForm::class)
                     ->addComponent(new VersionedGridFieldDetailForm)
             )
         );
@@ -79,5 +81,5 @@ class AlbumPage extends Page {
     }
 }
 
-class AlbumPage_Controller extends Page_Controller {
+class AlbumPage_Controller extends PageController {
 }

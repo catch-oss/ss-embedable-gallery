@@ -2,10 +2,12 @@
 
 namespace CatchDesign\EmbedableGallery\ModelAdmin;
 
-use ModelAdmin;
+
 use CatchDesign\EmbedableGallery\SiteTree\ImagePage;
 use CatchDesign\EmbedableGallery\SiteTree\VideoPage;
 use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
+use SilverStripe\Admin\ModelAdmin;
+
 
 
 
