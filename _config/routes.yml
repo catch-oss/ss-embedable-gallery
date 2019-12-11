@@ -1,7 +1,9 @@
 ---
 Name: ss-embedable-gallery-routes
-After: framework/routes#coreroutes
+After:
+  - '#rootroutes'
+  - '#coreroutes'
 ---
-Director:
+SilverStripe\Control\Director:
   rules:
-    sseg-album-admin: AlbumAdmin
+    sseg-album-admin: CatchDesign\EmbedableGallery\Controllers\AlbumAdmin
