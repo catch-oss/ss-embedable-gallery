@@ -3,6 +3,7 @@
 use SilverStripe\Forms\HTMLEditor\HTMLEditorConfig;
 use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\View\Parsers\ShortcodeParser;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\View\Requirements;
 use CatchDesign\EmbedableGallery\Extensions\SSEmedableGalleryPageExtension;
 
