@@ -27,7 +27,7 @@ Requirements::javascript( SS_EMBEDABLE_GALLERY_NS . 'assets/build/js/lib.js');
 // add the embed functionality
 ShortcodeParser::get('default')->register(
 	'album_embed',
-	['SSEmedableGalleryPageExtension', 'AlbumEmbedParser']
+	[CatchDesign\EmbedableGallery\Extensions\SSEmedableGalleryPageExtension::class, 'AlbumEmbedParser']
 );
 $cmsConfig->enablePlugins(array(
 	'albumEmbed' => $loader->resolveURL(SS_EMBEDABLE_GALLERY_NS . 'assets/build/js/editor-plugin.js')

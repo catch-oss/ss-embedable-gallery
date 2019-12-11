@@ -23,7 +23,7 @@ class AlbumsHolder extends Page {
     );
 
     private static $extensions = array(
-        'ExcludeChildren',
+        micschk\ExcludeChildren::class,
     );
 
     private static $excluded_children = array(
