@@ -81,6 +81,7 @@
     "mout": "^0.11.0",
     "npm-which": "^2.0.0",
     "object-assign": "^4.0.1",
+    "optipng-bin": "^6.0.0",
     "path-exists": "^2.0.0",
     "progress": "^1.1.8",
     "rc": "^1.1.2",

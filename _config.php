@@ -22,7 +22,7 @@ $loader = ModuleResourceLoader::singleton();
 
 // Requirements::css('silverstripe-example-module/styles/admin.css');
 // + Requirements::css('example-user/silverstripe-example-module: styles/admin.css');
-Requirements::javascript( SS_EMBEDABLE_GALLERY_NS . 'assets/build/js/lib.js');
+// Requirements::javascript( SS_EMBEDABLE_GALLERY_NS . 'assets/build/js/lib.js');
 
 // add the embed functionality
 ShortcodeParser::get('default')->register(
