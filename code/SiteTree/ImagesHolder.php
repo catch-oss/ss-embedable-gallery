@@ -21,7 +21,7 @@ class ImagesHolder extends Page {
     );
 
     private static $extensions = array(
-        micschk\ExcludeChildren::class,
+        \micschk\ExcludeChildren::class,
     );
 
     private static $excluded_children = array(
