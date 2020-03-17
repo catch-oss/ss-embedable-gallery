@@ -11,10 +11,9 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridField;
 use \PageController;
 
-
-
-class VideosHolder extends Page {
-
+class VideosHolder extends Page
+{
+    private static $table_name = 'VideosHolder';
     private static $can_be_root = false;
 
     private static $allowed_children = array(
@@ -29,12 +28,13 @@ class VideosHolder extends Page {
         VideoPage::class
     );
 
-    public function Videos() {
+    public function Videos()
+    {
         return DataList::create(VideoPage::class)->filter(array('ParentID' => $this->ID));
     }
 
-    public function getCMSFields() {
-
+    public function getCMSFields()
+    {
         $fields = parent::getCMSFields();
 
         $fields->addFieldToTab(
@@ -50,9 +50,9 @@ class VideosHolder extends Page {
         );
 
         return $fields;
-
     }
 }
 
-class VideosHolder_Controller extends PageController {
+class VideosHolder_Controller extends PageController
+{
 }

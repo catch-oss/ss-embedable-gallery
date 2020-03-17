@@ -9,12 +9,15 @@ use SilverStripe\ORM\DataObject;
 /**
  * @todo make this more portable - i.e. either require some other module like abc-silverstripe-social or explicitly define has one images etc
  */
-class ImagePage extends MediaPage {
+class ImagePage extends MediaPage
+{
+    private static $table_name = 'ImagePage';
 
     private static $can_be_root = false;
     private static $allowed_children = 'none';
 
-    public function handleParents() {
+    public function handleParents()
+    {
 
         // find the media home page, if it doesn't exist - create it
         if (!$page = DataObject::get_one(ImagesHolder::class)) {
@@ -24,23 +27,25 @@ class ImagePage extends MediaPage {
 
             // media home - created in default record and as a fall back in parent::onBeforeWrite()
             $page = DataObject::get_one(ImagesHolder::class);
-
         }
 
         // set parent
         $this->ParentID = $page->ID;
     }
 
-    public function validate() {
+    public function validate()
+    {
         $this->handleParents();
         return parent::validate();
     }
 
-    public function onBeforeWrite() {
+    public function onBeforeWrite()
+    {
         parent::onBeforeWrite();
         $this->handleParents();
     }
 }
 
-class ImagePage_Controller extends MediaPage_Controller {
+class ImagePage_Controller extends MediaPage_Controller
+{
 }

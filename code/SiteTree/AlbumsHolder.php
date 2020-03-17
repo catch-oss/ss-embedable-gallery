@@ -12,9 +12,9 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridField;
 use PageController;
 
-
-
-class AlbumsHolder extends Page {
+class AlbumsHolder extends Page
+{
+    private static $table_name = 'AlbumsHolder';
 
     private static $can_be_root = false;
 
@@ -30,12 +30,13 @@ class AlbumsHolder extends Page {
         AlbumPage::class
     );
 
-    public function Albums() {
+    public function Albums()
+    {
         return DataList::create(AlbumPage::class)->filter(array('ParentID' => $this->ID));
     }
 
-    public function getCMSFields() {
-
+    public function getCMSFields()
+    {
         $fields = parent::getCMSFields();
 
         $fields->addFieldToTab(
@@ -51,9 +52,9 @@ class AlbumsHolder extends Page {
         );
 
         return $fields;
-
     }
 }
 
-class AlbumsHolder_Controller extends PageController {
+class AlbumsHolder_Controller extends PageController
+{
 }

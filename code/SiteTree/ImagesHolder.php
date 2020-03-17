@@ -12,7 +12,9 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridField;
 use \PageController;
 
-class ImagesHolder extends Page {
+class ImagesHolder extends Page
+{
+    private static $table_name = 'ImagesHolder';
 
     private static $can_be_root = false;
 
@@ -28,12 +30,13 @@ class ImagesHolder extends Page {
         ImagePage::class
     );
 
-    public function Images() {
+    public function Images()
+    {
         return DataList::create(ImagePage::class)->filter(array('ParentID' => $this->ID));
     }
 
-    public function getCMSFields() {
-
+    public function getCMSFields()
+    {
         $fields = parent::getCMSFields();
 
         $fields->addFieldToTab(
@@ -49,9 +52,9 @@ class ImagesHolder extends Page {
         );
 
         return $fields;
-
     }
 }
 
-class ImagesHolder_Controller extends PageController {
+class ImagesHolder_Controller extends PageController
+{
 }

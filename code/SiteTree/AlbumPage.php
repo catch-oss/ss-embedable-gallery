@@ -14,10 +14,9 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\ORM\DataObject;
 use \PageController;
 
-
-
-class AlbumPage extends Page {
-
+class AlbumPage extends Page
+{
+    private static $table_name = 'AlbumPage';
     private static $can_be_root = false;
     private static $allowed_children = 'none';
 
@@ -32,8 +31,8 @@ class AlbumPage extends Page {
         ),
     );
 
-    public function getCMSFields() {
-
+    public function getCMSFields()
+    {
         $fields = parent::getCMSFields();
 
         // Add the gridfield
@@ -53,7 +52,8 @@ class AlbumPage extends Page {
         return $fields;
     }
 
-    public function handleParents() {
+    public function handleParents()
+    {
 
         // find the media home page, if it doesn't exist - create it
         if (!$page = DataObject::get_one(AlbumsHolder::class)) {
@@ -63,23 +63,25 @@ class AlbumPage extends Page {
 
             // media home - created in default record and as a fall back in parent::onBeforeWrite()
             $page = DataObject::get_one(AlbumsHolder::class);
-
         }
 
         // set parent
         $this->ParentID = $page->ID;
     }
 
-    public function validate() {
+    public function validate()
+    {
         $this->handleParents();
         return parent::validate();
     }
 
-    public function onBeforeWrite() {
+    public function onBeforeWrite()
+    {
         parent::onBeforeWrite();
         $this->handleParents();
     }
 }
 
-class AlbumPage_Controller extends PageController {
+class AlbumPage_Controller extends PageController
+{
 }

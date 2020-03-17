@@ -11,8 +11,9 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
 use \PageController;
 
-class MediaHomePage extends Page {
-
+class MediaHomePage extends Page
+{
+    private static $table_name = 'MediaHomePage';
     private static $can_be_root = true;
 
     private static $allowed_children = array(
@@ -29,21 +30,20 @@ class MediaHomePage extends Page {
      * records when the database is built, but make sure you call
      * parent::requireDefaultRecords().
      */
-    public function requireDefaultRecords() {
-
+    public function requireDefaultRecords()
+    {
         if (SiteTree::config()->create_default_pages) {
 
             // create the other home pages
             $this->createDefaultPages();
-
         }
 
         // call it on the parent
         parent::requireDefaultRecords();
-
     }
 
-    public function createDefaultPages() {
+    public function createDefaultPages()
+    {
         $home = $this->CreateDefaultPage(MediaHomePage::class, 'Media', 3, null, false, 'media', true);
         $this->CreateDefaultPage(AlbumsHolder::class, 'Albums', 1, $home)
              ->CreateDefaultPage(ImagesHolder::class, 'Images', 2, $home)
@@ -77,8 +77,12 @@ class MediaHomePage extends Page {
             $page->Title = $title;
             $page->ShowInMenus = $showInMenus;
             $page->Sort = $sort;
-            if ($path) $page->URLSegment = $path;
-            if ($parent) $page->ParentID = $parent->ID;
+            if ($path) {
+                $page->URLSegment = $path;
+            }
+            if ($parent) {
+                $page->ParentID = $parent->ID;
+            }
             $page->write();
             $page->doRestoreToStage();
             $page->doPublish();
@@ -89,9 +93,8 @@ class MediaHomePage extends Page {
         // make chainable
         return $returnCreatedRecord ? $page : $this;
     }
-
-
 }
 
-class MediaHomePage_Controller extends PageController {
+class MediaHomePage_Controller extends PageController
+{
 }
