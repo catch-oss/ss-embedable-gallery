@@ -17,6 +17,7 @@ use \PageController;
  * @todo - this page needs to present an option to choose a subclass before it presents the actual edit form
  */
 class MediaPage extends Page {
+    private static $table_name = 'MediaPage';
 
     private static $belongs_many_many = array(
         'Albums' => AlbumPage::class

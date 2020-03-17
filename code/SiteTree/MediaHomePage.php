@@ -12,6 +12,7 @@ use SilverStripe\ORM\DB;
 use \PageController;
 
 class MediaHomePage extends Page {
+    private static $table_name = 'MediaHomePage';
 
     private static $can_be_root = true;
 

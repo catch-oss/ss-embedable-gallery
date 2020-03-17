@@ -12,9 +12,8 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridField;
 use PageController;
 
-
-
 class AlbumsHolder extends Page {
+    private static $table_name = 'AlbumsHolder';
 
     private static $can_be_root = false;
 

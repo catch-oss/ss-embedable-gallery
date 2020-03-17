@@ -14,9 +14,8 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\ORM\DataObject;
 use \PageController;
 
-
-
 class AlbumPage extends Page {
+    private static $table_name = 'AlbumPage';
 
     private static $can_be_root = false;
     private static $allowed_children = 'none';

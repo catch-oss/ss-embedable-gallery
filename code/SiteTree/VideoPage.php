@@ -2,15 +2,13 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-
 use CatchDesign\EmbedableGallery\Extensions\SSEmbedableGalleryEmbedLinkExtension;
 use CatchDesign\EmbedableGallery\SiteTree\VideosHolder;
 use CatchDesign\EmbedableGallery\SiteTree\MediaHomePage;
 use SilverStripe\ORM\DataObject;
 
-
-
 class VideoPage extends MediaPage {
+    private static $table_name = 'VideoPage';
 
     private static $can_be_root = false;
     private static $allowed_children = 'none';

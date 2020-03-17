@@ -11,10 +11,8 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridField;
 use \PageController;
 
-
-
 class VideosHolder extends Page {
-
+    private static $table_name = 'VideosHolder';
     private static $can_be_root = false;
 
     private static $allowed_children = array(

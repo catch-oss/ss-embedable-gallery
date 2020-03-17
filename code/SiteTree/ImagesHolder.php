@@ -13,7 +13,7 @@ use SilverStripe\Forms\GridField\GridField;
 use \PageController;
 
 class ImagesHolder extends Page {
-
+    private static $table_name = 'ImagesHolder';
     private static $can_be_root = false;
 
     private static $allowed_children = array(

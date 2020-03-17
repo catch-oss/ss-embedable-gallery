@@ -10,10 +10,10 @@ use SilverStripe\ORM\DataObject;
  * @todo make this more portable - i.e. either require some other module like abc-silverstripe-social or explicitly define has one images etc
  */
 class ImagePage extends MediaPage {
+    private static $table_name = 'ImagePage';
 
     private static $can_be_root = false;
     private static $allowed_children = 'none';
-
     public function handleParents() {
 
         // find the media home page, if it doesn't exist - create it
