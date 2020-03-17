@@ -1,7 +1,7 @@
 {
   "author": "Aaron Latham-Anderson <aaron@catch.co.nz>",
   "name": "ss-embeddable-gallery",
-  "version": "0.0.1",
+  "version": "1.0.7",
   "license": "Contributor License Agreement",
   "repository": "git@gl.catch.co.nz:catch/ss-embedable-gallery.git",
   "dependencies": {},
