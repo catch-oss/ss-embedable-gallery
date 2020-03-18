@@ -6,10 +6,11 @@ then
 	exit 1
 fi
 
-gulp clean
-gulp
-git add -A
-git commit -m "Commit for release $1"
-git tag -a $1
-git push
+npm install && \
+gulp clean && \
+gulp && \
+git add -A && \
+git commit -m "Commit for release $1" && \
+git tag -a $1 && \
+git push && \
 git push origin $1
