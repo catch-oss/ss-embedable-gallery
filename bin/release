@@ -6,7 +6,10 @@ then
 	exit 1
 fi
 
+bundle install && \
 npm install && \
+node_modules/.bin/bower cache clean --allow-root && \
+node_modules/.bin/bower install --allow-root --strict-shrinkwrap && \
 gulp clean && \
 gulp && \
 git add -A && \

@@ -13,7 +13,7 @@
         eHandler = function(e) {
 
             // notify
-            // console.log(e);
+            console.log(e);
             $.notify.onError('Error: <%= error.message %>')(e);
 
             // fail the build if it isn't a watch
@@ -264,20 +264,21 @@
             _.src + '/img/**/*.{png,jpg,jpeg,gif,ico}'
         ])
         .pipe($.plumber({errorHandler: eHandler}))
-        .pipe(
-            $.imageOptimization({
-                optimizationLevel: 4,
-                progressive: true,
-                interlaced: true,
-                use: [
-                    pngquant(),
-                    jpegoptim({
-                        progressive: true,
-                        max: 80
-                    }),
-                ]
-            })
-        )
+        // need to replace this with something
+        // .pipe(
+        //     $.imageOptimization({
+        //         optimizationLevel: 4,
+        //         progressive: true,
+        //         interlaced: true,
+        //         use: [
+        //             pngquant(),
+        //             jpegoptim({
+        //                 progressive: true,
+        //                 max: 80
+        //             }),
+        //         ]
+        //     })
+        // )
         .pipe(gulp.dest(_.build + '/img'))
         .pipe($.size())
         .pipe($.notify({

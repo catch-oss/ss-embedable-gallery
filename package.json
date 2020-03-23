@@ -11,6 +11,8 @@
     "async-each": "^0.1.6",
     "balanced-match": "^0.2.1",
     "bin-version": "^1.0.4",
+    "bower": "^1.8.8",
+    "bower-shrinkwrap-resolver": "git+https://github.com/azt3k/bower-shrinkwrap-resolver.git",
     "chalk": "^0.5.1",
     "cli": "^0.11.0",
     "concat-map": "0.0.1",
