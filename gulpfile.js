@@ -257,8 +257,8 @@
     gulp.task('img', function() {
 
         // load optimiser plugins
-        var pngquant = require('imagemin-pngquant'),
-            jpegoptim = require('imagemin-jpegoptim');
+        // var pngquant = require('imagemin-pngquant'),
+        //     jpegoptim = require('imagemin-jpegoptim');
 
         return gulp.src([
             _.src + '/img/**/*.{png,jpg,jpeg,gif,ico}'
