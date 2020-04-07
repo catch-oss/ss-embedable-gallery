@@ -24,6 +24,7 @@
             });
 
             // replace the markup with the short code on save
+            // ed.onSaveContent.add(function(ed, o) {
             ed.on('SaveContent', function(o) {
                 var $content = $(o.content);
                 $content.find('.album-embed').each(function() {
@@ -43,8 +44,9 @@
             });
 
             // replace the short code with markup on load
-            ed.on('SetContent', function(o) {
+            // ed.onSetContent.add(function(ed) {
 
+            ed.on('SetContent', function() {
                 // parse the content
                 var re = /\[album_embed,id="([^"]+)"\]/gi,
                     m = ed.getContent().match(re);
