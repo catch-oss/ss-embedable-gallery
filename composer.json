@@ -17,8 +17,7 @@
         "silverstripe/cms"                      : "^4.3",
         "azt3k/abc-silverstripe"                : "*",
         "jonom/focuspoint"                      : ">=2.0",
-        "undefinedoffset/sortablegridfield"     : "^2",
-        "micschk/silverstripe-excludechildren"  : "*"
+        "undefinedoffset/sortablegridfield"     : "^2"
     },
     "replace": {"catch/ss-embedable-gallery": "*"},
     "autoload-dev": {

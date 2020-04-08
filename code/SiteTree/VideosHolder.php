@@ -20,11 +20,7 @@ class VideosHolder extends Page
         VideoPage::class
     );
 
-    private static $extensions = array(
-        \micschk\ExcludeChildren::class
-    );
-
-    private static $excluded_children = array(
+    private static $hide_from_cms_tree = array(
         VideoPage::class
     );
 

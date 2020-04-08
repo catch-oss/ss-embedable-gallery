@@ -22,11 +22,7 @@ class ImagesHolder extends Page
         ImagePage::class
     );
 
-    private static $extensions = array(
-        \micschk\ExcludeChildren::class,
-    );
-
-    private static $excluded_children = array(
+    private static $hide_from_cms_tree = array(
         ImagePage::class
     );
 
