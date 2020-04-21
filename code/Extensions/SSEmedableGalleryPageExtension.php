@@ -4,6 +4,8 @@ namespace CatchDesign\EmbedableGallery\Extensions;
 
 use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\Assets\Image;
+use SilverStripe\Assets\Upload_Validator;
 
 /**
  * @todo need reconcile removals in both directions
@@ -11,9 +13,26 @@ use SilverStripe\ORM\DataExtension;
  */
 class SSEmedableGalleryPageExtension extends DataExtension {
 
-    private static $casting = array(
+    private static $casting = [
         'AlbumEmbedParser' => 'HTMLText'
-    );
+    ];
+
+    private static $has_one = [
+        'PrimaryImage'      => Image::class
+    ];
+
+    public function updateCMSFields(\SilverStripe\Forms\FieldList $fields)
+    {
+        // images
+        $iValidator = new Upload_Validator;
+        $iValidator->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
+        $fields->AddFieldsToTab(
+            'Root.Images',
+            [
+                UploadField::create('PrimaryImage')->setValidator($iValidator),
+            ]
+        );
+    }
 
     // Short Code parser
     // -----------------

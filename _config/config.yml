@@ -1,5 +1,8 @@
 name: SSEmbedableGallery
 ---
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   extensions:
     - SSEmbedableGalleryLeftAndMainExtension
+CatchDesign\EmbedableGallery\SiteTree:
+  extensions:
+    - SSEmedableGalleryPageExtension
