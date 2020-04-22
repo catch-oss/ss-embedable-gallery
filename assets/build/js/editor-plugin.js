@@ -2,115 +2,130 @@
 
     'use strict';
 
-    tinymce.create('tinymce.plugins.albumEmbed', {
+    function init() {
 
-        init : function(ed, url) {
+        tinymce.create('tinymce.plugins.albumEmbed', {
 
-            // Register commands
-            ed.addCommand('mceInsertGalleryEmbed', function() {
-                ed.windowManager.open({
-                    title: 'Album Embed',
-                    url: '/sseg-album-admin',
-                    width: 900,
-                    height: 600
-                });
-            });
+            init : function(ed, url) {
 
-            // add the button
-            ed.addButton ('albumEmbed', {
-                'title' : 'Gallery Embed',
-                'image' : url + '/../img/icon.png',
-                'cmd': 'mceInsertGalleryEmbed',
-            });
-
-            // replace the markup with the short code on save
-            // ed.onSaveContent.add(function(ed, o) {
-            ed.on('SaveContent', function(o) {
-                var $content = $(o.content);
-                $content.find('.album-embed').each(function() {
-                    var $el = $(this);
-                    var shortCode = $el.attr('data-shortcode').replace(/'/g, '"');
-                    $el.replaceWith(shortCode);
+                // Register commands
+                ed.addCommand('mceInsertGalleryEmbed', function() {
+                    ed.windowManager.open({
+                        title: 'Album Embed',
+                        url: '/sseg-album-admin',
+                        width: 900,
+                        height: 600
+                    });
                 });
 
-                // get the content string
-                var content = $('<div />').append($content).html();
+                // add the button
+                ed.addButton ('albumEmbed', {
+                    'title' : 'Gallery Embed',
+                    'image' : url + '/../img/icon.png',
+                    'cmd': 'mceInsertGalleryEmbed',
+                });
 
-                // make sure we don't have a bung p tag
-                if (content.replace(/^\s+|\s+$/g, '') == '<p>&nbsp;</p>') content = '';
+                // replace the markup with the short code on save
+                // ed.onSaveContent.add(function(ed, o) {
+                ed.on('SaveContent', function(o) {
+                    var $content = $(o.content);
+                    $content.find('.album-embed').each(function() {
+                        var $el = $(this);
+                        var shortCode = $el.attr('data-shortcode').replace(/'/g, '"');
+                        $el.replaceWith(shortCode);
+                    });
 
-                // set the content;
-                o.content = content;
-            });
+                    // get the content string
+                    var content = $('<div />').append($content).html();
 
-            // replace the short code with markup on load
-            // ed.onSetContent.add(function(ed) {
+                    // make sure we don't have a bung p tag
+                    if (content.replace(/^\s+|\s+$/g, '') == '<p>&nbsp;</p>') content = '';
 
-            ed.on('SetContent', function() {
-                // parse the content
-                var re = /\[album_embed,id="([^"]+)"\]/gi,
-                    m = ed.getContent().match(re);
+                    // set the content;
+                    o.content = content;
+                });
 
-                if (m) {
+                // replace the short code with markup on load
+                // ed.onSetContent.add(function(ed) {
 
-                    // handle m
-                    var mCount = m.length,
-                        rCount = 0,
-                        rMap = {},
-                        i;
+                ed.on('SetContent', function() {
+                    // parse the content
+                    var re = /\[album_embed,id="([^"]+)"\]/gi,
+                        m = ed.getContent().match(re);
 
-                    // find all the matched
-                    for (i=0; i < m.length; i++) {
+                    if (m) {
 
-                        // extract the match data
-                        var mCur = m[i],
-                            m2 = /id="([^"]+)"/.exec(mCur),
-                            id = m2[1];
+                        // handle m
+                        var mCount = m.length,
+                            rCount = 0,
+                            rMap = {},
+                            i;
 
-                        // get the fully parsed piece of html
-                        $.get('/sseg-album-admin/htmlfragment/' + id, function(mCur, id, data) {
+                        // find all the matched
+                        for (i=0; i < m.length; i++) {
 
-                            // increment the request counter
-                            rCount++;
+                            // extract the match data
+                            var mCur = m[i],
+                                m2 = /id="([^"]+)"/.exec(mCur),
+                                id = m2[1];
 
-                            // generate the token
-                            var ii,
-                                token = '[album_embed,id="' + id + '"]';
+                            // get the fully parsed piece of html
+                            $.get('/sseg-album-admin/htmlfragment/' + id, function(mCur, id, data) {
 
-                            // generate the replacement html
-                            data =  '<div class="album-embed" data-shortcode="' + token.replace(/"/g, '\'') + '">' +
-                                        data +
-                                    '</div>';
+                                // increment the request counter
+                                rCount++;
 
-                            // store the replacement data
-                            rMap[mCur] = data;
+                                // generate the token
+                                var ii,
+                                    token = '[album_embed,id="' + id + '"]';
 
-                            // do the replacement once we get back all of the requests
-                            if (rCount == mCount) {
-                                var cont = ed.getContent();
-                                for (ii=0; ii < m.length; ii++) {
-                                    var key = m[ii];
-                                    cont = cont.replace(key, rMap[key]);
+                                // generate the replacement html
+                                data =  '<div class="album-embed" data-shortcode="' + token.replace(/"/g, '\'') + '">' +
+                                            data +
+                                        '</div>';
+
+                                // store the replacement data
+                                rMap[mCur] = data;
+
+                                // do the replacement once we get back all of the requests
+                                if (rCount == mCount) {
+                                    var cont = ed.getContent();
+                                    for (ii=0; ii < m.length; ii++) {
+                                        var key = m[ii];
+                                        cont = cont.replace(key, rMap[key]);
+                                    }
+                                    ed.setContent(cont);
                                 }
-                                ed.setContent(cont);
-                            }
 
-                        }.bind(null, mCur, id));
+                            }.bind(null, mCur, id));
+                        }
                     }
-                }
-            });
-        },
+                });
+            },
 
-        getInfo : function() {
-            return {
-                longname  : 'Album Embed',
-                author    : 'azt3k',
-                authorurl : 'http://www.catch.co.nz',
-                infourl   : 'http://gl.catch.co.nz/catch/ss-embedable-gallery',
-                version   : '0.1'
-            };
+            getInfo : function() {
+                return {
+                    longname  : 'Album Embed',
+                    author    : 'azt3k',
+                    authorurl : 'http://www.catch.co.nz',
+                    infourl   : 'http://gl.catch.co.nz/catch/ss-embedable-gallery',
+                    version   : '0.1'
+                };
+            }
+        });
+
+        tinymce.PluginManager.add('albumEmbed', tinymce.plugins.albumEmbed);
+    }
+
+    function adder() {
+        if (typeof tinymce === 'undefined') {
+            setTimeout(adder, 200);
         }
-    });
+        else {
+            init();
+        }
+    }
 
-    tinymce.PluginManager.add('albumEmbed', tinymce.plugins.albumEmbed);
+    adder();
+
 })(jQuery);
