@@ -3,6 +3,7 @@
 namespace CatchDesign\EmbedableGallery\Extensions;
 
 use CatchDesign\EmbedableGallery\SiteTree\AlbumPage;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Assets\Image;
 use SilverStripe\Assets\Upload_Validator;

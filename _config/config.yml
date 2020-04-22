@@ -1,8 +1,19 @@
+---
 name: SSEmbedableGallery
+After:
+  - '#core'
+  - '#versionedgridfield'
+  - '#requestprocessors'
 ---
 SilverStripe\Admin\LeftAndMain:
   extensions:
-    - SSEmbedableGalleryLeftAndMainExtension
+    - CatchDesign\EmbedableGallery\Extensions\SSEmbedableGalleryLeftAndMainExtension
+
 CatchDesign\EmbedableGallery\SiteTree:
   extensions:
-    - SSEmedableGalleryPageExtension
+    - CatchDesign\EmbedableGallery\Extensions\SSEmedableGalleryPageExtension
+
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Versioned\VersionedGridFieldItemRequest:
+    class: CatchDesign\EmbedableGallery\Gridfield\VersionedGridFieldItemRequest
+

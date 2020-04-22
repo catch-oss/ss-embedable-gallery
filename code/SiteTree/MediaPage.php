@@ -10,6 +10,7 @@ use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\LiteralField;
 use \PageController;
+use SilverStripe\Assets\Image;
 
 /**
  * @todo - this page needs to present an option to choose a subclass before it presents the actual edit form
@@ -21,6 +22,22 @@ class MediaPage extends Page
     private static $belongs_many_many = array(
         'Albums' => AlbumPage::class
     );
+
+    /**
+     * used by VersionedGridFieldItemRequest to prevent recursive writes to associated image records
+     *
+     * @return array
+     */
+    public function getWriteComponentsConf(): array
+    {
+        return [
+            'skip' => [
+                Image::class => [
+                    $this->PrimaryImage()->ID
+                ]
+            ]
+        ];
+    }
 
     public function getCMSFields()
     {
