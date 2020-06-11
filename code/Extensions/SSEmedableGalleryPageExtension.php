@@ -22,6 +22,10 @@ class SSEmedableGalleryPageExtension extends DataExtension
         'PrimaryImage'      => Image::class,
     ];
 
+    private static $owns = [
+        'PrimaryImage',
+    ];
+
     public function updateCMSFields(\SilverStripe\Forms\FieldList $fields)
     {
         // images
