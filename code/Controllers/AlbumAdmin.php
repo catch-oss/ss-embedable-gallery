@@ -60,6 +60,8 @@ class AlbumAdmin extends Controller
         $id = (int) $this->request->param('ID');
         $a = AlbumPage::get()->filter(['ID' => $id])->first();
 
-        return $a->renderWith('EmbeddedAlbum');
+        if ($a) {
+            return $a->renderWith('EmbeddedAlbum');
+        }
     }
 }
