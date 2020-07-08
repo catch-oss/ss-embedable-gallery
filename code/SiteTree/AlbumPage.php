@@ -2,34 +2,33 @@
 
 namespace CatchDesign\EmbedableGallery\SiteTree;
 
-use \Page;
-use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
-use CatchDesign\EmbedableGallery\SiteTree\MediaPage;
-use CatchDesign\EmbedableGallery\SiteTree\AlbumsHolder;
-use CatchDesign\EmbedableGallery\SiteTree\MediaHomePage;
+use Page;
+use PageController;
+use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
-use SilverStripe\Versioned\VersionedGridFieldDetailForm;
-use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\ORM\DataObject;
-use \PageController;
+use SilverStripe\Versioned\VersionedGridFieldDetailForm;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 class AlbumPage extends Page
 {
     private static $table_name = 'AlbumPage';
+
     private static $can_be_root = false;
+
     private static $allowed_children = 'none';
 
-    private static $many_many = array(
-        'Media' => MediaPage::class
-    );
+    private static $many_many = [
+        'Media' => MediaPage::class,
+    ];
 
-    private static $many_many_extraFields = array(
-        'Media' => array(
-            'SortOrder' => 'Int',
-            'InvSortOrder' => 'Int'
-        ),
-    );
+    private static $many_many_extraFields = [
+        'Media' => [
+            'SortOrder'    => 'Int',
+            'InvSortOrder' => 'Int',
+        ],
+    ];
 
     public function getCMSFields()
     {
@@ -45,7 +44,7 @@ class AlbumPage extends Page
                 GridFieldConfig_RelationEditor::create()
                     ->addComponent(new GridFieldSortableRows('SortOrder'))
                     ->removeComponentsByType(GridFieldDetailForm::class)
-                    ->addComponent(new VersionedGridFieldDetailForm)
+                    ->addComponent(new VersionedGridFieldDetailForm())
             )
         );
 
@@ -72,6 +71,7 @@ class AlbumPage extends Page
     public function validate()
     {
         $this->handleParents();
+
         return parent::validate();
     }
 
