@@ -8,7 +8,7 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\Versioned\VersionedGridFieldDetailForm;
+// use SilverStripe\Versioned\VersionedGridFieldDetailForm;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 class AlbumPage extends Page
@@ -43,8 +43,8 @@ class AlbumPage extends Page
                 $this->Media(),
                 GridFieldConfig_RelationEditor::create()
                     ->addComponent(new GridFieldSortableRows('SortOrder'))
-                    ->removeComponentsByType(GridFieldDetailForm::class)
-                    ->addComponent(new VersionedGridFieldDetailForm())
+                    // ->removeComponentsByType(GridFieldDetailForm::class)
+                    // ->addComponent(new VersionedGridFieldDetailForm)
             )
         );
 
