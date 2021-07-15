@@ -1,18 +1,24 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    rake (10.5.0)
-    sass (3.4.21)
-    scss_lint (0.44.0)
-      rake (~> 10.0)
-      sass (~> 3.4.15)
+    ffi (1.15.3)
+    rb-fsevent (0.11.0)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+    scss_lint (0.59.0)
+      sass (~> 3.5, >= 3.5.5)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-19
 
 DEPENDENCIES
   sass
   scss_lint
 
 BUNDLED WITH
-   1.10.6
+   2.2.8

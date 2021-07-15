@@ -6,8 +6,125 @@ then
 	exit 1
 fi
 
-bundle install && \
-npm install && \
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+USER=$(whoami)
+
+# Home dir
+if [ -z "$HOME" ]; then
+    if [ "$USER" == "root" ]; then
+        HOMEDIR="/root"
+    else
+        HOMEDIR="/home/$USER"
+    fi
+else
+    HOMEDIR=$HOME
+fi
+
+# set permissions
+# ---------------
+
+# dump the current home directory
+echo "Using Homedir: $HOMEDIR"
+
+# let the user know whats going on
+echo "Fixing permissions if necessary, you may be asked for your sudo password..."
+
+if [ -d "$HOMEDIR/.npm" ]; then
+	sudo chown -R $USER "$HOMEDIR/.npm"
+fi
+
+if [ -d "$HOMEDIR/.cache" ]; then
+	sudo chown -R $USER "$HOMEDIR/.cache"
+fi
+
+if [ -d "$HOMEDIR/.nvm" ]; then
+	sudo chown -R $USER "$HOMEDIR/.nvm"
+fi
+
+if [ -d "$DIR/../node_modules" ]; then
+	sudo chown -R $USER "$DIR/../node_modules"
+fi
+
+# load bash config
+# ----------------
+
+if [ -f "$HOMEDIR/.nvm/nvm.sh" ]; then
+	echo "loading .nvm/nvm.sh"
+	source "$HOMEDIR/.nvm/nvm.sh"
+fi
+
+if [ -f "$HOMEDIR/.bashrc" ]; then
+	echo "loading .bashrc"
+	source "$HOMEDIR/.bashrc"
+fi
+
+if [ -f "$HOMEDIR/.bash_profile" ]; then
+	echo "loading .bash_profile"
+	source "$HOMEDIR/.bash_profile"
+fi
+
+if [ -f "$HOMEDIR/.profile" ]; then
+	echo "loading .profile"
+	source "$HOMEDIR/.profile"
+fi
+
+# go to to working dir
+# --------------------
+
+cd "$DIR/.."
+
+# build script debugging
+# ----------------------
+
+echo "Running as:"
+whoami
+echo "on:"
+cat /etc/hostname
+echo "SSH Public key:"
+cat ~/.ssh/id_rsa.pub
+echo "
+
+";
+
+# init correct versions
+# ---------------------
+
+# ruby
+if [ -f "$BASEDIR/.ruby-version" ]; then
+    rbenv install --skip-existing
+    rbenv local "$(< .ruby-version)"
+fi
+
+# node
+if [ -f "$BASEDIR/.nvmrc" ]; then
+    nvm install && nvm use
+fi
+
+# Helpful output
+# --------------
+
+echo "Using Ruby:"
+which ruby
+ruby -v
+echo "Using Node:"
+which node
+node -v
+
+# install deps
+# ------------
+
+# ruby
+if [ -f "$BASEDIR/Gemfile" ]; then
+    gem install bundler && \
+    bundle install --path vendor
+fi
+
+# node
+if [ -f "$BASEDIR/package.json" ]; then
+    npm install
+fi
+
 node_modules/.bin/bower cache clean --allow-root && \
 node_modules/.bin/bower install --allow-root --strict-shrinkwrap && \
 gulp clean && \
