@@ -33,19 +33,19 @@ class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
         if ($link = $this->owner->EmbedLink) {
 
             if (preg_match('/(youtube\.com|youtu\.be)\/(v\/|u\/|embed\/|watch\?v=)?([^#\&\?]*).*/', $link, $matches)) {
-                $href = 'http://www.youtube.com/embed/' . $matches[3] .
+                $href = 'https://www.youtube.com/embed/' . $matches[3] .
                         '?autohide=2&fs=0&rel=0&enablejsapi=1&modestbranding=1&showinfo=0' .
                         ($autoplay ? '&autoplay=1' : '');
                 $type = 'iframe';
             }
             else if (preg_match('/vimeo.com\/(video\/)?(\d+)\/?(.*)/', $link, $matches)) {
-                $href = 'http://player.vimeo.com/video/' . $matches[2] .
+                $href = 'https://player.vimeo.com/video/' . $matches[2] .
                         '?hd=1&api=1&show_title=1&show_byline=1&badge=0&show_portrait=0&color=&fullscreen=1' .
                         ($id ? '&player_id=' . $id : '') . ($autoplay ? '&autoplay=1' : '');
                 $type = 'iframe';
             }
             else if (preg_match('/vimeo.com\/channels\/(.+)\/(\d+)\/?/', $link, $matches)) {
-                $href = 'http://player.vimeo.com/video/' . $matches[2] .
+                $href = 'https://player.vimeo.com/video/' . $matches[2] .
                         '?hd=1&api=1&show_title=1&show_byline=1&badge=0&show_portrait=0&color=&fullscreen=1' .
                         ($id ? '&player_id=' . $id : '') . ($autoplay ? '&autoplay=1' : '');
                 $type = 'iframe';
@@ -74,7 +74,7 @@ class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
                 $type = 'image';
             }
             else if (preg_match('/maps\.google\.com\/(\?ll=|maps\/?\?q=)(.*)/', $link, $matches)) {
-                $href = 'http://maps.google.com/' . $matches[1] . '' . $matches[2] .
+                $href = 'https://maps.google.com/' . $matches[1] . '' . $matches[2] .
                         '&output=' . ((strpos($matches[2], 'layer=c')) ? 'svembed' : 'embed');
                 $type = 'iframe';
             }
