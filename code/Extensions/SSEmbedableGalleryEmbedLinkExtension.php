@@ -14,7 +14,8 @@ class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
 
     public function updateCMSFields(FieldList $fields) {
         parent::updateCMSFields($fields);
-        $fields->addFieldToTab('Root.Media', new TextField('EmbedLink', 'Embed Link'));
+        $fields->addFieldToTab('Root.Media', TextField::create('EmbedLink', 'Embed Link')->setDescription('For Facebook video, use the whole Embed link (Share -> Embed)'));
+
     }
 
     public function is_ie() {
@@ -78,7 +79,10 @@ class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
                         '&output=' . ((strpos($matches[2], 'layer=c')) ? 'svembed' : 'embed');
                 $type = 'iframe';
             }
-
+            else if (preg_match('/(facebook\.com\/).*href=(.*?)\&/', $link, $matches)) {
+                $href = "https://www.facebook.com/plugins/video.php?href=" . $matches[2] . "&show_text=false&t=0";
+                $type = 'fb';
+            }
             // return
             if (!empty($href)) {
                 return [
@@ -156,7 +160,19 @@ class SSEmbedableGalleryEmbedLinkExtension extends DataExtension {
                             </object>
                         ';
                         break;
-
+                    case 'fb':
+                        return '
+                        <iframe src="' . $href .'"
+                                width="' . $w . '"
+                                height="' . $h .'"
+                                style="border:none;overflow:hidden"
+                                scrolling="no"
+                                frameborder="0"
+                                allowfullscreen="true"
+                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                allowFullScreen="true"></iframe>
+                        ';
+                        break;
                 }
             }
 
