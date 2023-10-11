@@ -26,15 +26,18 @@
             // replace the markup with the short code on save
             // ed.onSaveContent.add(function(ed, o) {
             ed.on('SaveContent', function(o) {
-                var $content = $(o.content);
+                var $content = $('<div>' + o.content + '</div>');
                 $content.find('.album-embed').each(function() {
-                    var $el = $(this);
-                    var shortCode = $el.attr('data-shortcode').replace(/'/g, '"');
-                    $el.replaceWith(shortCode);
+                    const $el = $(this);
+                    const shortCodeRaw = $el.attr('data-shortcode');
+                    if (shortCodeRaw) {
+                        const shortCode = shortCodeRaw.replace(/'/g, '"');
+                        $el.replaceWith(shortCode);
+                    }
                 });
 
                 // get the content string
-                var content = $('<div />').append($content).html();
+                var content = $('<div />').append($content.html()).html();
 
                 // make sure we don't have a bung p tag
                 if (content.replace(/^\s+|\s+$/g, '') == '<p>&nbsp;</p>') content = '';
