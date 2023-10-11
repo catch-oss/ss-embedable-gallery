@@ -24,6 +24,9 @@ $loader = ModuleResourceLoader::singleton();
 // + Requirements::css('example-user/silverstripe-example-module: styles/admin.css');
 // Requirements::javascript( SS_EMBEDABLE_GALLERY_NS . 'assets/build/js/lib.js');
 
+// Requirements::javascript('silverstripe/admin:thirdparty/tinymce/plugins/compat3x/plugin.js');
+// Requirements::javascript('silverstripe/admin:thirdparty/tinymce/plugins/compat3x/tiny_mce_popup.js');
+
 // add the embed functionality
 ShortcodeParser::get('default')->register(
 	'album_embed',

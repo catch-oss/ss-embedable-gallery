@@ -105,8 +105,8 @@
             return {
                 longname  : 'Album Embed',
                 author    : 'azt3k',
-                authorurl : 'http://www.catch.co.nz',
-                infourl   : 'http://gl.catch.co.nz/catch/ss-embedable-gallery',
+                authorurl : 'http://www.catchdesign.co.nz',
+                infourl   : 'http://gl.catchdesign.co.nz/catch/ss-embedable-gallery',
                 version   : '0.1'
             };
         }

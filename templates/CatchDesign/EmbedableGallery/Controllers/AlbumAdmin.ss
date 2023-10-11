@@ -2,10 +2,12 @@
 <html>
     <head>
         <title>Insert an Album</title>
-        <script type="text/javascript" src="../../framework/thirdparty/jquery/jquery.js"></script>
-        <script type="text/javascript" src="../../framework/thirdparty/tinymce/tiny_mce_popup.js"></script>
-        <script type="text/javascript" src="/$ModuleDir/assets/build/js/popup.js"></script>
-        <link type="text/css" rel="stylesheet" href="/$ModuleDir/assets/build/css/main.css">
+        <script type="text/javascript" src="/resources/vendor/silverstripe/admin/thirdparty/tinymce/tinymce.js"></script>
+        <script type="text/javascript" src="/resources/vendor/silverstripe/admin/client/dist/js/vendor.js"></script>
+        <script type="text/javascript" src="/resources/vendor/silverstripe/admin/thirdparty/tinymce/plugins/compat3x/plugin.js"></script>
+        <script type="text/javascript" src="/resources/vendor/silverstripe/admin/thirdparty/tinymce/plugins/compat3x/tiny_mce_popup.js"></script>
+        <script type="text/javascript" src="/resources/vendor/catch/ss-embedable-gallery/assets/build/js/popup.js"></script>
+        <link type="text/css" rel="stylesheet" href="/resources/vendor/catch/ss-embedable-gallery/assets/build/css/main.css">
     </head>
     <body class="popup">
         <form>
