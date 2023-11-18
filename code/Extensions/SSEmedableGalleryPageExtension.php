@@ -22,9 +22,11 @@ class SSEmedableGalleryPageExtension extends DataExtension
         'PrimaryImage'      => Image::class,
     ];
 
-    private static $owns = [
-        'PrimaryImage',
-    ];
+    // let's not enforce this for now
+    // the implementing page type can decide if it wants to enforce it
+    // private static $owns = [
+    //     'PrimaryImage',
+    // ];
 
     public function updateCMSFields(\SilverStripe\Forms\FieldList $fields)
     {
